@@ -1,9 +1,10 @@
-const baseURL = "https://pokeapi.co/api/v2/";
+const baseURL = import.meta.env.VITE_POKEMON_API_BASE;
 
 export default class ExternalPokemonServices {
 
   async getPokemonList(limit = 500) {
     const res = await fetch(`${baseURL}pokemon?limit=${limit}`);
+
     const data = await res.json();
 
     const details = await Promise.all(

@@ -1,5 +1,16 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
+function pokemonCardTemplate(pokemon) {
+    return `
+      <li class="pokemon-card">
+        <h3>${pokemon.name}</h3>
+        <img src="${pokemon.image}" alt="${pokemon.name}">
+        <a href="/pokemon_pages/index.html?pokemon=${pokemon.id}">Detail</a>
+        <p>Type: ${pokemon.types.join(", ")}</p>
+      </li>
+    `;
+  }
+
 export default class PokemonList {
   constructor(dataSource, listElement, filterElement) {
     this.dataSource = dataSource;
@@ -21,16 +32,7 @@ export default class PokemonList {
   }
 
   // ---------- TEMPLATE PARA UNA TARJETA ----------
-  pokemonCardTemplate(pokemon) {
-    return `
-      <li class="pokemon-card">
-        <h3>${pokemon.name}</h3>
-        <img src="${pokemon.image}" alt="${pokemon.name}">
-        <a href="/pokemon_pages/index.html?pokemon=${pokemon.id}">Detail</a>
-        <p>Type: ${pokemon.types.join(", ")}</p>
-      </li>
-    `;
-  }
+  
 
   // ---------- RENDER TARJETAS ----------
   renderPage() {
@@ -39,7 +41,7 @@ export default class PokemonList {
     const pageItems = this.filteredPokemon.slice(start, end);
 
     renderListWithTemplate(
-      this.pokemonCardTemplate,
+      pokemonCardTemplate,
       this.listElement,
       pageItems,
       "afterbegin",

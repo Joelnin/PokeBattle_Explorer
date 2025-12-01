@@ -11,4 +11,3 @@ const filterElement = document.querySelector(".type-filter");
 
 const pokemonList = new PokemonList(dataSource, listElement, filterElement);
 pokemonList.init();
-

@@ -2,10 +2,10 @@
   --font-body: Arial, Helvetica, sans-serif;
   --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   /* colors */
-  --primary-color: #f0a868;
-  --secondary-color: #525b0f;
-  --tertiary-color: #8a470c;
-  --light-grey: #d0d0d0;
+  --primary-color: #2D3EC2;
+  --secondary-color: #FFCB05;
+  --tertiary-color: #CC1421;
+  --light-grey: #ffffff;
   --dark-grey: #303030;
 
   /* sizes */
@@ -40,9 +40,32 @@ p {
   padding: 0.75rem;
 }
 
+/* Header Design*/
+
+header > div:not(:first-child) {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: bold;
+}
+
+header ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+}
+
+header > div:not(:first-child) a {
+  color: black;
+  text-decoration: none;
+  padding: 1rem;
+}
+
 .logo {
   line-height: 60px;
-  width: 245px;
   overflow: hidden;
   display: flex;
   font-size: 30px;
@@ -53,46 +76,27 @@ p {
 .logo img {
   width: 60px;
   height: 60px;
+  margin-right: 5px;
 }
 
 .logo a {
-  text-decoration: none;
-  color: var(--font-body);
+  color: black;
 }
 
-.hero {
-  position: relative;
+.user-favorites li {
+  background-color: var(--secondary-color);
+  padding: 5px;
+  border-radius: 8px;
+  margin-right: 10px;
 }
 
-.hero .logo {
-  position: absolute;
-  left: calc(50% - 60px);
-  bottom: -15px;
-  background-color: white;
+.user-favorites li:hover {
+  background-color: var(--secondary-color);
+  padding: 5px;
+  border-radius: 8px;
+  margin-right: 10px;
 }
 
-.logo--square {
-  font-size: var(--small-font);
-  width: 110px;
-  height: 80px;
-
-  flex-direction: column;
-  align-items: flex-end;
-  box-shadow: 1px 1px 4px var(--light-grey);
-  justify-content: center;
-  align-items: center;
-  line-height: 1;
-}
-
-.logo--square img {
-  width: 90px;
-  height: 90px;
-  margin-top: -1.3em;
-}
-
-.logo--square > div {
-  margin-top: -1.7em;
-}
 
 /* utility classes */
 .highlight {
@@ -116,24 +120,54 @@ button {
 
 /* End utility classes */
 
-/* Cart icon styles */
-.cart {
-  padding-top: 1em;
+/* index design */
+
+/* Hero design */
+
+.hero {
   position: relative;
-  text-align: center;
 }
 
-.cart svg {
-  width: 25px;
+.hero .logo {
+  position: absolute;
+  left: calc(50% - 50px);
+  bottom: -25px;
+  border-radius: 150px;
 }
 
-.cart:hover svg {
-  fill: gray;
+.logo--square {
+  background-image: url("/images/noun_Tent_2517.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-size: var(--small-font);
+  width: 100px;
+  height: 100px;
+  flex-direction: column;
+  align-items: flex-end;
+  box-shadow: 1px 1px 10px var(--light-grey);
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  text-decoration: none;
 }
 
-/* End cart icon styles */
+.logo--square p {
+  font-size: 3rem;
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 1px 2px var(--secondary-color),
+    0 0 2em white,
+    0 0 0.2em white;
+}
 
-.mission {
+.logo--square p:hover {
+  font-size: 4rem;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 2px var(--primary-color),
+    1px 4px 3em rgb(0, 0, 0),
+    -1px -1px 0.5em rgb(0, 0, 0);
+}
+
+.hero-description {
   position: absolute;
   top: 1rem;
   left: 0;
@@ -145,25 +179,29 @@ button {
   opacity: 0.8;
 }
 
-.mission p {
+.hero-description p {
   margin: 0 auto;
   width: 50%;
   text-align: center;
 }
+
+/* End of Hero design */
 
 .pokemons {
   margin-top: 2rem;
   padding: 1rem;
 }
 
-.pokemon-list {
+.pokemon-list,
+.TCG-list {
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
   justify-content: center;
 }
 
-.pokemon-list a {
+.pokemon-list a,
+.TCG-list a {
   text-decoration: none;
   color: var(--dark-grey);
 }
@@ -247,7 +285,7 @@ button {
     margin: auto;
   }
 
-  .mission {
+  .hero-description {
     font-size: 1.2em;
   }
 

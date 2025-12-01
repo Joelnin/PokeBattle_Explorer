@@ -3,29 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleep Outside | Home</title>
+    <title>PokeBattle Explore | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
     <script src="js/main.js" type="module"></script>
-    <script src="js/pokemon-listing.js" type="module"></script>
   </head>
 
   <body>
     <header id="main-header" class="divider"></header>
     <main class="divider">
+      <div class="hero">
+        <img
+          src="/images/banner-sm.jpg"
+          srcset="images/banner-sm.jpg 500w, images/banner.jpg"
+          alt="image of a high mountain lake"
+        />
+        <a class="logo logo--square" href="#">
+          <p>GO</p>
+        </a>
+        <div class="hero-description">
+          <p>BATTLE USING YOUR FAVORITE POKEMON TYPE!</p>
+        </div>
+      </div>
 
+      <section class="miscellaneous">
+        <div class="pokedex-section">
+          <h2>Pokedex</h2>
 
-      <section>
-        <nav class="type-filter"></nav>
-      
-        <ul class="pokemon-list"></ul>
-      
-        <div class="pagination"></div>
+          <p>Do you want to know more about pokemons?</p>
+
+          <a href="/pokemon_listing/">Let's explore!</a>
+        </div>
+
+        <div class="tcg-section">
+          <h2>TCG</h2>
+
+          <p>Take a look at the amazing cards!</p>
+
+          <a href="/tcg_listing/">Let's go!</a>
+        </div>
       </section>
 
+      <section id="week-favorite-pokemon">
+        <h2>POKEMON OF THE WEEK</h2>
+
+        <h3>PIKACHU</h3>
+
+        <div id="week-pokemon">
+          <img src="/images/week-pokemon.png" alt="Pikachu" />
+
+          <div class="pokemon-details">
+            <p>Type: Electric ⚡</p>
+            <p>Weight: 6 kg</p>
+            <p>Height: 0.4 m</p>
+            <p>
+              Reasons: Just look at him! He's adorable <span>&#x2665;</span>
+            </p>
+            <a href="/pokemon_pages/index.html?pokemon=25">More Details</a>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer id="main-footer">
-      &copy;2025 ⛺ SleepOutside ⛺ WDD 330 ⛺ BYU-Idaho for BYU-Pathway
-      Worldwide Online
-    </footer>
+    <footer id="main-footer"></footer>
   </body>
 </html>
