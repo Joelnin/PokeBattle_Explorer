@@ -5,12 +5,12 @@ function cardTemplate(card) {
     <li class="pokemon-card">
       <h3>${card.name}</h3>
       <img src="${card.image}" alt="${card.name} card image">
-      <a href="/tcg_pages/index.html?card=${card.id}">Detail</a>
+      <a href="/tcg_pages/index.html?card=${card.id}">More Details</a>
     </li>
   `;
 }
 
-export default class TCGSearch {
+export default class TCGList {
   constructor(searchInput, dataSource, listElement, paginationElement) {
     this.searchInput = searchInput;
     this.dataSource = dataSource;
@@ -23,11 +23,7 @@ export default class TCGSearch {
   }
 
   init() {
-
-    console.log("Pagina empezo")
     this.startPage();
-    console.log("Pagina termino")
-
 
     document.getElementById("tcgSearchBtn")
       .addEventListener("click", () => this.performSearch());

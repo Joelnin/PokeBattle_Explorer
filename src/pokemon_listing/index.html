@@ -10,22 +10,89 @@
 
     <link rel="stylesheet" href="../css/style.css" />
 
-    <script src="../js/pokemon-listing.js" type="module"></script>
+    <!-- <script src="../js/pokemon-listing.js" type="module"></script> -->
   </head>
 
   <body>
     <header id="main-header" class="divider"></header>
 
     <main class="divider">
-      <section>
-        <nav class="type-filter"></nav>
+      <h1>POKEDEX</h1>
 
-        <ul class="pokemon-list"></ul>
+      <section class="search-container">
+        <label for="searchInput">🔍</label>
+        <input id="searchInput" type="text" placeholder="Search pokemon..." />
+        <button id="searchBtn">Search</button>
+      </section>
+
+      <section>
+        <div class="type-filter">
+          <a class="filter-btn active" data-type="all">All</a>
+          <a class="filter-btn" data-type="grass">Grass</a>
+          <a class="filter-btn" data-type="poison">Poison</a>
+          <a class="filter-btn" data-type="fire">Fire</a>
+          <a class="filter-btn" data-type="flying">Flying</a>
+          <a class="filter-btn" data-type="water">Water</a>
+          <a class="filter-btn" data-type="bug">Bug</a>
+          <a class="filter-btn" data-type="normal">Normal</a
+          ><a class="filter-btn" data-type="electric">Electric</a>
+          <a class="filter-btn" data-type="ground">Ground</a>
+          <a class="filter-btn" data-type="fairy">Fairy</a>
+          <a class="filter-btn" data-type="fighting">Fighting</a>
+          <a class="filter-btn" data-type="psychic">Psychic</a>
+          <a class="filter-btn" data-type="rock">Rock</a>
+          <a class="filter-btn" data-type="steel">Steel</a>
+          <a class="filter-btn" data-type="ice">Ice</a>
+          <a class="filter-btn" data-type="ghost">Ghost</a>
+          <a class="filter-btn" data-type="dragon">Dragon</a>
+          <a class="filter-btn" data-type="dark">Dark</a>
+        </div>
+
+        <ul class="pokemon-list">
+          <li class="pokemon-card">
+            <h3>Bulbasaur</h3>
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+              alt="bulbasaur imahe"
+            />
+            <a href="/pokemon_pages/index.html?pokemon=1">Detail</a>
+            <p>Type: Grass, poison</p>
+          </li>
+
+          <li class="pokemon-card">
+            <h3>Ivysaur</h3>
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+              alt="ivysaur imahe"
+            />
+            <a href="/pokemon_pages/index.html?pokemon=2">Detail</a>
+            <p>Type: Grass, poison</p>
+          </li>
+
+          <li class="pokemon-card">
+            <h3>Venusaur</h3>
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+              alt="venusaur imahe"
+            />
+            <a href="/pokemon_pages/index.html?pokemon=3">Detail</a>
+            <p>Type: Grass, poison</p>
+          </li>
+
+          <li class="pokemon-card">
+            <h3>Charmander</h3>
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
+              alt="charmander imahe"
+            />
+            <a href="/pokemon_pages/index.html?pokemon=4">Detail</a>
+            <p>Type: Fire</p>
+          </li>
+        </ul>
 
         <div class="pagination"></div>
       </section>
     </main>
-
     <footer id="main-footer"></footer>
   </body>
 </html>

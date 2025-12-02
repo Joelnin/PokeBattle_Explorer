@@ -1,18 +1,19 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, capitalizeFirstLetter } from "./utils.mjs";
 
 function pokemonCardTemplate(pokemon) {
     return `
       <li class="pokemon-card">
-        <h3>${pokemon.name}</h3>
-        <img src="${pokemon.image}" alt="${pokemon.name}">
-        <a href="/pokemon_pages/index.html?pokemon=${pokemon.id}">Detail</a>
-        <p>Type: ${pokemon.types.join(", ")}</p>
+        <h3>${capitalizeFirstLetter(pokemon.name)}</h3>
+        <img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} imahe">
+        <a href="/pokemon_pages/index.html?pokemon=${pokemon.id}">Know More</a>
+        <p>Type: ${capitalizeFirstLetter(pokemon.types.join(", "))}</p>
       </li>
     `;
   }
 
 export default class PokemonList {
-  constructor(dataSource, listElement, filterElement) {
+  constructor(searchInput, dataSource, listElement, filterElement) {
+    this.searchInput = searchInput;
     this.dataSource = dataSource;
     this.listElement = listElement;
     this.filterElement = filterElement;
@@ -27,14 +28,15 @@ export default class PokemonList {
     this.allPokemon = await this.dataSource.getPokemonList();  
     this.filteredPokemon = [...this.allPokemon];
 
+    document.getElementById("searchBtn").addEventListener("click", () => {
+      this.performSearch();
+    
+     });
+
     this.renderFilters();
     this.renderPage();
   }
 
-  // ---------- TEMPLATE PARA UNA TARJETA ----------
-  
-
-  // ---------- RENDER TARJETAS ----------
   renderPage() {
     const start = (this.currentPage - 1) * this.pageSize;
     const end = start + this.pageSize;
@@ -48,57 +50,47 @@ export default class PokemonList {
       true
     );
 
-    this.renderPagination();
   }
 
-  // ---------- PAGINACIÓN ----------
-  renderPagination() {
-    const totalPages = Math.ceil(this.filteredPokemon.length / this.pageSize);
-    const paginationContainer = document.querySelector(".pagination");
-    paginationContainer.innerHTML = "";
 
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement("button");
-      btn.textContent = i;
-      btn.classList.add("page-btn");
-      if (i === this.currentPage) btn.classList.add("active");
+  performSearch() {
+    const query = this.searchInput.value.trim().toLowerCase();
 
-      btn.addEventListener("click", () => {
-        this.currentPage = i;
-        this.renderPage();
-      });
+    this.currentPage = 1;
 
-      paginationContainer.appendChild(btn);
+    const filteredBeforeSearch = this.filteredPokemon;
+
+    this.filteredPokemon = this.filteredPokemon.filter(pokemon => pokemon.name.includes(query));
+
+    if (this.filteredPokemon.length === 0) {
+      this.listElement.innerHTML = "<p>No matching pokemon found.</p>";
+      return;
     }
+
+    this.renderPage();
+
+    this.filteredPokemon = filteredBeforeSearch;
   }
 
-  // ---------- GENERAR FILTROS AUTOMÁTICOS ----------
   renderFilters() {
-    const types = new Set();
 
-    this.allPokemon.forEach(p => p.types.forEach(t => types.add(t)));
+    this.filterElement.addEventListener("click", (element) => {
+      if (!element.target.matches(".filter-btn")) return;
 
-    this.filterElement.innerHTML = `
-      <button class="filter-btn active" data-type="all">All</button>
-      ${[...types].map(t => `<button class="filter-btn" data-type="${t}">${t}</button>`).join("")}
-    `;
-
-    this.filterElement.addEventListener("click", (e) => {
-      if (!e.target.matches(".filter-btn")) return;
-
-      const type = e.target.dataset.type;
+      const type = element.target.dataset.type;
 
       document.querySelectorAll(".filter-btn")
         .forEach(btn => btn.classList.remove("active"));
-      e.target.classList.add("active");
+      element.target.classList.add("active");
 
       if (type === "all") {
         this.filteredPokemon = [...this.allPokemon];
       } else {
-        this.filteredPokemon = this.allPokemon.filter(p => p.types.includes(type));
+        this.filteredPokemon = this.allPokemon.filter(pokemon => pokemon.types.includes(type));
       }
 
       this.currentPage = 1;
+      this.searchInput.value = "";
       this.renderPage();
     });
   }

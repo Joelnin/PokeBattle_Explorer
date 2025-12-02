@@ -40,6 +40,13 @@ p {
   padding: 0.75rem;
 }
 
+h1 {
+  font-size: 2.5rem;
+  color: black;
+  justify-self: center;
+  margin: 30px 0;
+}
+
 /* Header Design*/
 
 header > div:not(:first-child) {
@@ -104,7 +111,7 @@ header > div:not(:first-child) a {
 
 button {
   padding: 0.5em 2em;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: white;
   margin: auto;
   display: block;
@@ -246,7 +253,7 @@ button {
   padding: 15px;
   border: 1px solid var(--secondary-color);
   width: 100%;
-    box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 5px black;
 
   .week-pokemon {
     display: grid;
@@ -273,6 +280,15 @@ button {
       }
     }
   }
+}
+
+/* POKEDEX design */
+
+.search-container {
+  border: 1px solid black;
+  margin-bottom: 10px;
+  padding: 1rem;
+  align-items: center;
 }
 
 .pokemons {

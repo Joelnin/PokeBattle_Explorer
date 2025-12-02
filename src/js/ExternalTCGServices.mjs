@@ -1,4 +1,4 @@
-const baseURL = import.meta.env.VITE_TCGDEX_API_BASE;
+const baseURL = import.meta.env.VITE_TCG_API_URL;
 
 async function convertToJson(res) {
 

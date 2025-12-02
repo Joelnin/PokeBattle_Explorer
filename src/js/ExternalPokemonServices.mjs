@@ -1,4 +1,4 @@
-const baseURL = import.meta.env.VITE_POKEMON_API_BASE;
+const baseURL = import.meta.env.VITE_POKEMON_API_URL;
 
 export default class ExternalPokemonServices {
 

@@ -6,8 +6,14 @@ loadHeaderFooter();
 
 const dataSource = new ExternalPokemonServices();
 
+const searchInput = document.getElementById("searchInput");
 const listElement = document.querySelector(".pokemon-list");
 const filterElement = document.querySelector(".type-filter");
 
-const pokemonList = new PokemonList(dataSource, listElement, filterElement);
+const pokemonList = new PokemonList(
+  searchInput,
+  dataSource,
+  listElement,
+  filterElement,
+);
 pokemonList.init();
