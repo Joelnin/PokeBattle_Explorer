@@ -10,5 +10,10 @@ const searchInput = document.getElementById("tcgSearchInput");
 const listElement = document.querySelector(".TCG-list");
 const paginationElement = document.querySelector(".pagination");
 
-const search = new TCGSearch(searchInput, dataSource, listElement, paginationElement);
+const search = new TCGSearch(
+  searchInput,
+  dataSource,
+  listElement,
+  paginationElement,
+);
 search.init();

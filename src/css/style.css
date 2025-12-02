@@ -2,9 +2,9 @@
   --font-body: Arial, Helvetica, sans-serif;
   --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   /* colors */
-  --primary-color: #2D3EC2;
-  --secondary-color: #FFCB05;
-  --tertiary-color: #CC1421;
+  --primary-color: #12229b;
+  --secondary-color: #ffcb05;
+  --tertiary-color: #cc1421;
   --light-grey: #ffffff;
   --dark-grey: #303030;
 
@@ -53,7 +53,7 @@ header > div:not(:first-child) {
 
 header ul {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   list-style: none;
 }
@@ -96,7 +96,6 @@ header > div:not(:first-child) a {
   border-radius: 8px;
   margin-right: 10px;
 }
-
 
 /* utility classes */
 .highlight {
@@ -154,7 +153,8 @@ button {
 .logo--square p {
   font-size: 3rem;
   color: rgb(0, 0, 0);
-  text-shadow: 1px 1px 2px var(--secondary-color),
+  text-shadow:
+    1px 1px 2px var(--secondary-color),
     0 0 2em white,
     0 0 0.2em white;
 }
@@ -162,7 +162,8 @@ button {
 .logo--square p:hover {
   font-size: 4rem;
   color: rgb(255, 255, 255);
-  text-shadow: 2px 2px 2px var(--primary-color),
+  text-shadow:
+    2px 2px 2px var(--primary-color),
     1px 4px 3em rgb(0, 0, 0),
     -1px -1px 0.5em rgb(0, 0, 0);
 }
@@ -186,6 +187,93 @@ button {
 }
 
 /* End of Hero design */
+
+.miscellaneous {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 0px 5px black;
+}
+
+.miscellaneous a {
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 0 50px;
+  text-decoration: none;
+  border: 2px solid white;
+}
+
+.miscellaneous a:hover {
+  background-color: black;
+}
+
+.miscellaneous div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  height: 205px;
+}
+
+.pokedex-section {
+  background: linear-gradient(to bottom, var(--primary-color), rgb(7, 7, 7));
+  color: white;
+  a {
+    background-color: var(--primary-color);
+  }
+}
+
+.tcg-section {
+  background: linear-gradient(to bottom, var(--tertiary-color), rgb(7, 7, 7));
+  color: white;
+  a {
+    background-color: var(--tertiary-color);
+  }
+}
+
+/* Pokemon of the Week design */
+
+#week-favorite-pokemon {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-items: center;
+  color: black;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 15px;
+  border: 1px solid var(--secondary-color);
+  width: 100%;
+    box-shadow: 0px 0px 5px black;
+
+  .week-pokemon {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+
+    align-items: center;
+
+    img {
+      height: 250px;
+      justify-self: right;
+    }
+
+    .pokemon-details {
+      text-align: left;
+
+      a {
+        color: black;
+        padding: 10px;
+        border-radius: 15px;
+        margin: 0 50px;
+        text-decoration: none;
+        border: 2px solid black;
+        background-color: var(--secondary-color);
+      }
+    }
+  }
+}
 
 .pokemons {
   margin-top: 2rem;
@@ -279,6 +367,9 @@ button {
   grid-column: 3;
 }
 
+@media screen and (max-width: 950) {
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -287,6 +378,21 @@ button {
 
   .hero-description {
     font-size: 1.2em;
+  }
+
+  header ul {
+    flex-direction: row;
+  }
+
+  .miscellaneous {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 40px 0 10px 0px;
+  }
+
+  #week-favorite-pokemon {
+    width: 500px;
+    justify-self: center;
   }
 
   .cart-card {
