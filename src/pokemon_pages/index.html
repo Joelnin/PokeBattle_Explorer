@@ -20,23 +20,67 @@
 
     <main class="divider">
       <section class="pokemon-detail-container">
-        <h2 class="pokemon__name"></h2>
+        <h1 class="pokemon-name">Bulbasaur</h1>
 
         <div class="pokemon-detail-wrapper">
           <div class="pokemon-detail-image">
-            <img id="pokemonImage" alt="pokemon" />
+            <img
+              id="pokemonImage"
+              alt="Bulbasaur original art image"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+            />
           </div>
 
           <div class="pokemon-detail-info">
-            <p class="pokemon__types"></p>
-            <p class="pokemon__abilities"></p>
-            <div class="pokemon__stats"></div>
+            <div>
+              <p>
+                <strong>Type(s): </strong>
+                <span class="pokemon-types">Grass, poison</span>.
+              </p>
 
-            <button id="addToFavorites" class="favorite-btn">
-              Add to Favorites
-            </button>
+              <p>
+                <strong>Height: </strong>
+                <span class="pokemon-height">0.7</span> m
+              </p>
+
+              <p>
+                <strong>Weight: </strong>
+                <span class="pokemon-weight">6.9</span> kg
+              </p>
+
+              <p>
+                <strong>Abilities: </strong>
+                <span class="pokemon-abilities">Overgrow, chlorophyll</span>.
+              </p>
+              <p>
+                <strong>Moves: </strong>
+                <span class="pokemon-moves"
+                  >Razor wind, swords dance, cut, bind, vine whip</span
+                >.
+              </p>
+            </div>
+
+            <div class="stats">
+              <h2>Stats</h2>
+              <div class="pokemon-stats">
+                <p><strong>Hp: </strong>45</p>
+
+                <p><strong>Attack: </strong>49</p>
+
+                <p><strong>Defense: </strong>49</p>
+
+                <p><strong>Special attack: </strong>65</p>
+
+                <p><strong>Special defense: </strong>65</p>
+
+                <p><strong>Speed: </strong>45</p>
+              </div>
+            </div>
           </div>
         </div>
+        <button id="addToFavorites" class="favorite-btn" data-id="1">
+          Favorites <span class="favorite-heart added">♥</span>
+        </button>
       </section>
     </main>
 

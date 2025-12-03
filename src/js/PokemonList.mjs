@@ -1,7 +1,7 @@
 import { renderListWithTemplate, capitalizeFirstLetter } from "./utils.mjs";
 
 function pokemonCardTemplate(pokemon) {
-    return `
+  return `
       <li class="pokemon-card">
         <h3>${capitalizeFirstLetter(pokemon.name)}</h3>
         <img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} imahe">
@@ -9,7 +9,7 @@ function pokemonCardTemplate(pokemon) {
         <a href="/pokemon_pages/index.html?pokemon=${pokemon.id}">Know More</a>
       </li>
     `;
-  }
+}
 
 export default class PokemonList {
   constructor(searchInput, dataSource, listElement, filterElement) {

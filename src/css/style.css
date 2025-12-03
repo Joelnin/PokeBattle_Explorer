@@ -386,12 +386,11 @@ button {
     flex: 1 1 45%;
     margin: 0.25em;
     padding: 1rem;
-  box-shadow: 1px 1px 10px var(--light-grey);
+    box-shadow: 1px 1px 10px var(--light-grey);
     border: 5px solid var(--light-grey);
     max-width: 250px;
     text-align: center;
   }
-
 
   a {
     color: white;
@@ -425,56 +424,67 @@ button {
   }
 }
 
-.pokemons {
-  margin-top: 2rem;
-  padding: 1rem;
-}
+/* End of POKEDEX page design */
 
-.TCG-list {
-  display: flex;
-  flex-flow: row wrap;
-  list-style-type: none;
-  justify-content: center;
-}
-
-.TCG-list a {
-  text-decoration: none;
-  color: var(--dark-grey);
-}
+/* POKEDEX details page design */
 
 /* Styles for product lists */
-.pokemon-card {
-  flex: 1 1 45%;
-  margin: 0.25em;
-  padding: 0.5em;
-  border: 1px solid var(--light-grey);
-  max-width: 250px;
-}
 
-.pokemon-card h2,
-.pokemon-card h3,
-.pokemon-card p {
-  margin: 0.5em 0;
-}
-
-.card__brand {
-  font-size: var(--small-font);
-}
-
-.card__name {
-  font-size: 1em;
-}
-
-/* End product list card */
-
-.pokemon-detail {
+.pokemon-detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 1em;
-  max-width: 500px;
   margin: auto;
+
+  .pokemon-detail-image {
+    width: 100%;
+      max-width: 350px;
+      align-self: center;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .pokemon-detail-info {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+      background-color: white;
+
+    .stats {
+      text-align: center;
+      background-color: var(--light-grey);
+      padding: 0;
+      margin-bottom: 10px;
+
+      h2 {
+        color: white;
+        background-color: black;
+        padding: 10px;
+      }
+    }
+  }
+  @media screen and (min-width: 680px) {
+    flex-direction: row;
+
+    .pokemon-detail-image {
+      border: none;
+
+      img {
+        height: 320px;
+        /* border-bottom: 2px solid var(--primary-color);
+        border-top: 2px solid var(--primary-color); */
+      }
+    }
+
+    .pokemon-detail-info {
+      width: 400px;
+      flex-direction: column-reverse;
+    }
+  }
 }
 
-.pokemon-detail img {
-  width: 100%;
+.added {
+  color: var(--tertiary-color);
 }
 
 /* Start cart list card styles */
@@ -515,6 +525,18 @@ button {
   grid-column: 3;
 }
 
+.TCG-list {
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+  justify-content: center;
+}
+
+.TCG-list a {
+  text-decoration: none;
+  color: var(--dark-grey);
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -540,11 +562,6 @@ button {
         text-align: left;
       }
     }
-  }
-
-  .cart-card {
-    font-size: inherit;
-    grid-template-columns: 150px auto 15%;
   }
 }
 
