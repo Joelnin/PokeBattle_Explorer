@@ -4,7 +4,7 @@ function pokemonCardTemplate(pokemon) {
   return `
       <li class="pokemon-card">
         <h3>${capitalizeFirstLetter(pokemon.name)}</h3>
-        <img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} imahe">
+        <img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} image">
         <p>Type: ${capitalizeFirstLetter(pokemon.types.join(", "))}</p>
         <a href="/pokemon_pages/index.html?pokemon=${pokemon.id}">Know More</a>
       </li>
