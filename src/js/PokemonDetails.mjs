@@ -12,28 +12,25 @@ export default class PokemonDetails {
     this.pokemon = await this.dataSource.findPokemonById(this.pokemonId);
     this.renderPokemonDetails();
 
-    const favorites = getLocalStorage("so-favorites") || [];
-    const exists = favorites.find((poke) => poke.id === this.pokemon.id);
+       
 
-    if (!exists) {
-      document.querySelector(".favorite-heart").classList.toggle("added");
-    }
-
-    document.getElementById("addToFavorites").addEventListener("click", () => {
-      this.addToFavorites.bind(this);
-    });
+    document.getElementById("addToFavorites").addEventListener("click", this.addToFavorites.bind(this));
   }
 
   addToFavorites() {
+
     const favorites = getLocalStorage("so-favorites") || [];
 
-    const exists = favorites.find((poke) => poke.id === this.pokemon.id);
+    // const exists = favorites.find((poke) => poke.id === this.pokemon.id);
 
-    if (!exists) {
-      favorites.push(this.pokemon);
+    if (!pokemonExist(this.pokemon.id)) {
+     favorites.push(this.pokemon);
     }
 
+
     setLocalStorage("so-favorites", favorites);
+    isFavorite(this.pokemon.id);
+
   }
 
   renderPokemonDetails() {
@@ -68,7 +65,7 @@ export default class PokemonDetails {
     // Pokemon move(s)
     let moves = document.querySelector(".pokemon-moves");
     moves.textContent = capitalizeFirstLetter(pokemon.moves.join(", ").replace(/-/g, " "));
-    
+
     // Pokemon Stats
     let stats = document.querySelector(".pokemon-stats");
     stats.innerHTML = pokemon.stats
@@ -77,10 +74,31 @@ export default class PokemonDetails {
         <p><strong>${capitalizeFirstLetter(stat.name.replace(/-/g, " "))}: </strong>${stat.value}</p>
       `)
       .join("");
-
-
-    //Add it to favorites
+    
+    //Add pokemon to favorites
     let addToFavorites = document.getElementById("addToFavorites")
     addToFavorites.dataset.id = pokemon.id;
+    isFavorite(this.pokemon.id);
+
   }
+}
+
+function pokemonExist(pokemonId) {
+  const favorites = getLocalStorage("so-favorites") || [];
+  const exists = favorites.find((item) => item.id === pokemonId);
+
+  if (exists) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function isFavorite(pokemon) {
+
+  const heart = document.querySelector("#favorite-heart")
+  
+   if (pokemonExist(pokemon) && !heart.classList.contains("added")) {
+      heart.classList.add("added");
+    }
 }

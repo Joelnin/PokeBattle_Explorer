@@ -54,7 +54,7 @@ export default class ExternalPokemonServices {
       height: (data.height / 10).toFixed(1), // Convert to m
     };
 
-    console.log(details)
+    // console.log(details)
 
     return details;
   }

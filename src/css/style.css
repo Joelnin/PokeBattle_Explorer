@@ -439,8 +439,8 @@ button {
 
   .pokemon-detail-image {
     width: 100%;
-      max-width: 350px;
-      align-self: center;
+    max-width: 350px;
+    align-self: center;
     border-bottom: 2px solid var(--primary-color);
   }
 
@@ -448,7 +448,7 @@ button {
     text-align: left;
     display: flex;
     flex-direction: column;
-      background-color: white;
+    background-color: white;
 
     .stats {
       text-align: center;
