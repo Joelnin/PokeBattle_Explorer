@@ -19,11 +19,13 @@
     <main class="divider">
       <h1>POKEDEX</h1>
 
-      <section class="search-container">
-        <label for="searchInput">🔍</label>
-        <input id="searchInput" type="text" placeholder="Search pokemon..." />
+      <div class="search-container">
+        <label for="searchInput"
+          >Do you want to search for a specific one?</label
+        >
+        <input id="searchInput" type="text" placeholder="Charizard" />
         <button id="searchBtn">Search</button>
-      </section>
+      </div>
 
       <section>
         <div class="type-filter">
@@ -55,8 +57,8 @@
               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
               alt="bulbasaur imahe"
             />
-            <a href="/pokemon_pages/index.html?pokemon=1">Detail</a>
             <p>Type: Grass, poison</p>
+            <a href="/pokemon_pages/index.html?pokemon=1">Know More</a>
           </li>
 
           <li class="pokemon-card">
@@ -65,8 +67,8 @@
               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
               alt="ivysaur imahe"
             />
-            <a href="/pokemon_pages/index.html?pokemon=2">Detail</a>
             <p>Type: Grass, poison</p>
+            <a href="/pokemon_pages/index.html?pokemon=2">Know More</a>
           </li>
 
           <li class="pokemon-card">
@@ -75,8 +77,8 @@
               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
               alt="venusaur imahe"
             />
-            <a href="/pokemon_pages/index.html?pokemon=3">Detail</a>
             <p>Type: Grass, poison</p>
+            <a href="/pokemon_pages/index.html?pokemon=3">Know More</a>
           </li>
 
           <li class="pokemon-card">
@@ -85,12 +87,23 @@
               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
               alt="charmander imahe"
             />
-            <a href="/pokemon_pages/index.html?pokemon=4">Detail</a>
             <p>Type: Fire</p>
+            <a href="/pokemon_pages/index.html?pokemon=4">Know More</a>
           </li>
         </ul>
 
-        <div class="pagination"></div>
+        <div class="pagination">
+          <div id="back-page">
+            <!-- <button>◀</button> -->
+          </div>
+          <p>
+            Page <span id="current-page">1</span> of
+            <span id="total-pages">1</span>
+          </p>
+          <div id="next-page">
+            <!-- <button>▶</button> -->
+          </div>
+        </div>
       </section>
     </main>
     <footer id="main-footer"></footer>
