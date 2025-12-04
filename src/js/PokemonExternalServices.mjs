@@ -1,7 +1,6 @@
 const baseURL = import.meta.env.VITE_POKEMON_API_URL;
 
 async function convertToJson(res) {
-
   const jsonResponse = await res.json();
 
   if (res.ok) {

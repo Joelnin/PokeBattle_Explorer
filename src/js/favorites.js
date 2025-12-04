@@ -1,8 +1,4 @@
-import {
-  capitalizeFirstLetter,
-  getLocalStorage,
-  loadHeaderFooter,
-} from "./utils.mjs";
+import { capitalizeFirstLetter, getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 

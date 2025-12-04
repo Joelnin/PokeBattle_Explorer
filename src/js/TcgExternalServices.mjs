@@ -1,7 +1,6 @@
 const baseURL = import.meta.env.VITE_TCG_API_URL;
 
 async function convertToJson(res) {
-
   const jsonResponse = await res.json();
 
   if (res.ok) {
@@ -40,12 +39,11 @@ export default class ExternalTCGServices {
   }
 
 
-  // Obtener carta por ID
   async findCardById(id) {
 
     const response = await fetch(`${baseURL}/${id}`);
     const results = await convertToJson(response);
-    console.log(results.Result);
+    // console.log(results.Result);
 
     const data = results.Result
 
@@ -71,7 +69,7 @@ export default class ExternalTCGServices {
       })),
       category: data.category,
     };
-    console.log(details)
+    // console.log(details)
 
     return details;
   }

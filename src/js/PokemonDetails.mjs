@@ -12,29 +12,22 @@ export default class PokemonDetails {
     this.pokemon = await this.dataSource.findPokemonById(this.pokemonId);
     this.renderPokemonDetails();
 
-       
-
     document.getElementById("addToFavorites").addEventListener("click", this.addToFavorites.bind(this));
   }
 
   addToFavorites() {
-
     const favorites = getLocalStorage("so-favorites") || [];
-
     // const exists = favorites.find((poke) => poke.id === this.pokemon.id);
 
     if (!pokemonExist(this.pokemon.id)) {
-     favorites.push(this.pokemon);
+      favorites.push(this.pokemon);
     }
-
 
     setLocalStorage("so-favorites", favorites);
     isFavorite(this.pokemon.id);
-
   }
 
   renderPokemonDetails() {
-
     const pokemon = this.pokemon
 
     // Name of the pokemon
@@ -79,7 +72,6 @@ export default class PokemonDetails {
     let addToFavorites = document.getElementById("addToFavorites")
     addToFavorites.dataset.id = pokemon.id;
     isFavorite(this.pokemon.id);
-
   }
 }
 
@@ -95,10 +87,9 @@ function pokemonExist(pokemonId) {
 }
 
 function isFavorite(pokemon) {
-
   const heart = document.querySelector("#favorite-heart")
   
-   if (pokemonExist(pokemon) && !heart.classList.contains("added")) {
-      heart.classList.add("added");
-    }
+  if (pokemonExist(pokemon) && !heart.classList.contains("added")) {
+    heart.classList.add("added");
+  }
 }

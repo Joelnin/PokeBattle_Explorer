@@ -58,7 +58,6 @@ export default class PokemonList {
       "afterbegin",
       true
     );
-
     this.renderPagination()
   }
 
@@ -76,9 +75,7 @@ export default class PokemonList {
       this.listElement.innerHTML = "<p>No matching pokemon found.</p>";
       return;
     }
-
     this.renderPage();
-
     this.filteredPokemon = filteredBeforeSearch;
   }
 
