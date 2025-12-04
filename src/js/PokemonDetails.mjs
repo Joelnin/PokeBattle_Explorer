@@ -60,7 +60,7 @@ export default class PokemonDetails {
 
     // Pokemon abilities
     let abilities = document.querySelector(".pokemon-abilities");
-    abilities.textContent = capitalizeFirstLetter(pokemon.abilities.join(", "));
+    abilities.textContent = capitalizeFirstLetter(pokemon.abilities.join(", ").replace(/-/g, " "));
 
     // Pokemon move(s)
     let moves = document.querySelector(".pokemon-moves");
