@@ -1,9 +1,16 @@
-import { renderListWithTemplate, capitalizeFirstLetter } from "./utils.mjs";
+import { renderListWithTemplate, capitalizeFirstLetter, getLocalStorage } from "./utils.mjs";
 
 function pokemonCardTemplate(pokemon) {
+
+  let favorite = ""
+
+  if (pokemonExist(pokemon.id)) {
+    favorite = "♥"    
+  }
+
   return `
       <li class="pokemon-card">
-        <h3>${capitalizeFirstLetter(pokemon.name)}</h3>
+        <h3>${capitalizeFirstLetter(pokemon.name)} <span class="added">${favorite}</span></h3>
         <img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} image">
         <p>Type: ${capitalizeFirstLetter(pokemon.types.join(", "))}</p>
         <a href="/pokemon_pages/index.html?pokemon=${pokemon.id}">Know More</a>
@@ -154,4 +161,15 @@ export default class PokemonList {
     }
   }
 
+}
+
+function pokemonExist(pokemonId) {
+  const favorites = getLocalStorage("so-favorites") || [];
+  const exists = favorites.find((item) => item.id === pokemonId);
+
+  if (exists) {
+    return true;
+  } else {
+    return false;
+  }
 }
