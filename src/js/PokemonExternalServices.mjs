@@ -13,7 +13,7 @@ async function convertToJson(res) {
 
 export default class PokemonExternalServices {
 
-  async getPokemonList(limit = 500) {
+  async getPokemonList(limit = 1200) {
     const response = await fetch(`${baseURL}pokemon?limit=${limit}`);
 
     const data = await convertToJson(response);
