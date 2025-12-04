@@ -11,7 +11,7 @@ function pokemonCardTemplate(pokemon) {
   return `
       <li class="pokemon-card">
         <h3>${capitalizeFirstLetter(pokemon.name)} <span class="added">${favorite}</span></h3>
-        <img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} image">
+        <img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} Original Art Picture">
         <p>Type: ${capitalizeFirstLetter(pokemon.types.join(", "))}</p>
         <a href="/pokemon_pages/index.html?pokemon=${pokemon.id}">Know More</a>
       </li>
@@ -37,7 +37,6 @@ export default class PokemonList {
 
     document.getElementById("searchBtn").addEventListener("click", () => {
       this.performSearch();
-    
     });
 
     this.renderFilters();
@@ -160,7 +159,6 @@ export default class PokemonList {
       nextPagebtn.innerHTML = "";
     }
   }
-
 }
 
 function pokemonExist(pokemonId) {

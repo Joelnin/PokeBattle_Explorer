@@ -11,7 +11,7 @@ async function convertToJson(res) {
   }
 }
 
-export default class ExternalPokemonServices {
+export default class PokemonExternalServices {
 
   async getPokemonList(limit = 500) {
     const response = await fetch(`${baseURL}pokemon?limit=${limit}`);
