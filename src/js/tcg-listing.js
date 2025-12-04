@@ -9,10 +9,10 @@ const dataSource = new TcgExternalServices();
 const searchInput = document.getElementById("searchInput");
 const listElement = document.querySelector(".TCG-list");
 
-const carList = new TCGList(
+const cardList = new TCGList(
   searchInput,
   dataSource,
   listElement,
 );
 
-carList.init();
+cardList.init();

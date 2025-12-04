@@ -1,4 +1,4 @@
-import {renderListWithTemplate } from "./utils.mjs";
+import {getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
 function cardTemplate(card) {
 
@@ -43,18 +43,19 @@ export default class TCGList {
 
   async performSearch() {
     const query = this.searchInput.value.trim().toLowerCase();
-    if (!query) return;
 
     this.currentPage = 1;
-    this.allResults = await this.dataSource.getData(query);
 
-    if (this.allResults.length === 0) {
-      this.listElement.innerHTML = "<p>No matching cards found.</p>";
-      this.paginationElement.innerHTML = "";
+    const filteredBeforeSearch = this.filteredResults;
+
+    this.filteredResults = this.filteredResults.filter(card => card.name.includes(query));
+
+    if (this.filteredResults.length === 0) {
+      this.listElement.innerHTML = "<p>No matching card found.</p>";
       return;
     }
-
     this.renderPage();
+    this.filteredResults = filteredBeforeSearch;
   }
 
     renderPage() {
@@ -84,7 +85,7 @@ export default class TCGList {
 
     const filteredBeforeSearch = this.filteredResults;
 
-    this.filteredResults = this.filteredResults.filter(card => card.name.includes(query));
+    this.filteredResults = this.filteredResults.filter(card => card.name.toLowerCase().includes(query));
 
     if (this.filteredResults.length === 0) {
       this.listElement.innerHTML = "<p>No matching cards found.</p>";
@@ -154,7 +155,7 @@ export default class TCGList {
 
 function cardExist(cardId) {
   const collections = getLocalStorage("so-collection") || [];
-  const exists = favorites.find((item) => item.id === cardId);
+  const exists = collections.find((item) => item.id === cardId);
 
   if (exists) {
     return true;
