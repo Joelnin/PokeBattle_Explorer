@@ -43,34 +43,46 @@ export default class ExternalTCGServices {
   async findCardById(id) {
 
     const response = await fetch(`${baseURL}/${id}`);
-    const results = await convertToJson(response);
-    // console.log(results.Result);
+    const data = await convertToJson(response);
+    // console.log(data);+
 
-    const data = results.Result
 
     const details = {
       id: data.id,
       name: data.name,
+
       image: data.image ? `${data.image}/low.webp` : "/images/basic/no-image.png", // If they don't have an image, get the image from the basic images
-      rarity: data.rarity,
+
+      rarity: data.rarity || "Not available yet",
+
       variants: data.variants_detailed.map((v) => v.type),
-      hp: data.hp,
-      types: data.types.map((t) => t.type),
-      abilities: data.abilities.map((a) => ({
-        name: a.name,
-        effect: a.effect,
-        type: a.type,
-      })),
-      attacks: data.attacks.map((at) => ({
-        cost: at.cost.forEach((c) => {
-          costCount[c] = (costCount[c] || 0) + 1;
-        }),
-        name: at.name,
-        effect: at.effect,
-      })),
-      category: data.category,
+      hp: data.hp || "Not available yet",
+
+      types: (data.types?.length
+        ? data.types.map((t) => t)
+        : ["Not available yet"]
+      ),
+
+      weaknesses: (data.weaknesses?.length
+        ? data.weaknesses.map((w) => w.type)
+        : ["Not available yet"]),
+      
+      attacks: (data.attacks?.length
+        ? data.attacks.map((at) => ({
+          cost: at.cost ? getCost(at.cost) : "Not available yet",
+          name: at.name || "Not available yet",
+          effect: at.effect || "Not available yet",
+        }))
+        : [{
+          cost: "Not available yet",
+          name: "Not available yet",
+          effect: "Not available yet",
+        }]
+      ),
+
+      category: data.category || "Not available yet",
     };
-    // console.log(details)
+    console.log(details)
 
     return details;
   }
@@ -107,4 +119,14 @@ function formatDate(dateString) {
   const year = date.getFullYear();
 
   return `${day}/${month}/${year}`;
+}
+
+function getCost(cost) {
+  const costCount = {};  // Declarar aquí
+
+  cost.forEach((c) => {
+    costCount[c] = (costCount[c] || 0) + 1;
+  });
+
+  return costCount;
 }

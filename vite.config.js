@@ -14,6 +14,8 @@ export default defineConfig({
         favorites: resolve(__dirname, "src/favorites/index.html"),
 
         tcg_listing: resolve(__dirname, "src/tcg_listing/index.html"),
+        tcg_pages: resolve(__dirname, "src/tcg_pages/index.html"),
+        collections: resolve(__dirname, "src/collections/index.html"),
       },
     },
   },

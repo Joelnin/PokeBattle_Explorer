@@ -80,40 +80,52 @@ button {
   background-color: var(--light-grey);
 
   .navigation {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column;*/
     width: 100%;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-out;
 
-    .user-favorites {
+    .pages {
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+
       li {
+        list-style: none;
+        padding: 10px;
+        a {
+          color: black;
+          font-size: 1.3rem;
+        }
+      }
+
+      .user-favorites {
         background-color: var(--secondary-color);
-        padding: 5px;
+        padding: 10px;
         margin-top: 10px;
         border-radius: 8px;
       }
     }
-  }
 
-  ul {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    list-style: none;
-  }
+    a {
+      text-decoration: none;
+      padding: 1rem;
+    }
 
-  a {
-    color: black;
-    text-decoration: none;
-    padding: 1rem;
-  }
+    &.open {
+      grid-template-rows: 1fr;
+    }
 
-  .open ul {
-    display: flex;
-    text-align: center;
-  }
-
-  .open a {
-    display: block;
+    &.open ul {
+      display: block;
+      font-size: 1.2rem;
+      padding: 0.8rem;
+      text-align: center;
+      color: var(--primary-color);
+      background: var(--accent2-color);
+    }
   }
 }
 
@@ -124,6 +136,7 @@ button {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  cursor: pointer;
 
   &::before {
     content: "☰";
@@ -376,7 +389,7 @@ button {
   }
 }
 
-.pokemon-list, 
+.pokemon-list,
 .TCG-list {
   display: flex;
   flex-flow: row wrap;
@@ -391,16 +404,17 @@ button {
     border: 5px solid var(--light-grey);
     max-width: 250px;
     text-align: center;
-  
-  a {
-    color: white;
-    padding: 10px 15px;
-    border-radius: 15px;
-    text-decoration: none;
-    border: 2px solid white;
-    background-color: var(--tertiary-color);
-    cursor: pointer;
-  }}
+
+    a {
+      color: white;
+      padding: 10px 15px;
+      border-radius: 15px;
+      text-decoration: none;
+      border: 2px solid white;
+      background-color: var(--tertiary-color);
+      cursor: pointer;
+    }
+  }
 }
 
 .pagination {
@@ -561,7 +575,7 @@ button {
   }
 }
 
-/* Rotar carta */
+/* Roll card */
 
 .go-round {
   position: relative;
@@ -610,12 +624,14 @@ button {
 
         padding: 0;
         background-color: white;
-        border-radius: 35px;
         left: 1px;
         top: 1px;
         margin: 0;
         width: 60px;
         border: 1px solid var(--light-grey);
+        .favorite {
+          border-radius: 35px;
+        }
       }
 
       .remove-item {
@@ -643,7 +659,6 @@ button {
   }
 }
 
-/* Efecto de rotación al pasar el cursor */
 .card:hover .card-inner {
   transform: rotateY(180deg);
 }
@@ -654,35 +669,110 @@ button {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  /* Oculta la cara trasera del elemento */
 }
 
 .card-front {
   background-color: white;
-  /* Estilos para el frente */
 }
 
 .card-back {
   background-color: blue;
   color: white;
   transform: rotateY(180deg);
-  /* Gira la cara trasera para que inicialmente esté oculta */
-  /* Estilos para la parte de atrás */
 }
 
 /* End of Favorites page design */
 
-.TCG-list {
+/* TCG Details design */
+
+.cards-detail-container {
   display: flex;
-  flex-flow: row wrap;
-  list-style-type: none;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: black;
+
+  li {
+    list-style: none;
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .general-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    img {
+      max-width: 250px;
+    }
+    p {
+      color: black;
+      width: 100%;
+      font-weight: bold;
+      font-size: 1.3rem;
+      background-color: var(--light-grey);
+    }
+    .variants {
+      padding: 15px 0;
+    }
+  }
+
+  #other-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+
+    h2 {
+      color: white;
+      text-decoration: underline;
+      text-decoration-color: var(--primary-color);
+      margin-bottom: 10px;
+      background-color: var(--primary-color);
+      padding: 10px 0;
+    }
+    * {
+      width: 100%;
+    }
+
+    .attacks {
+      border-bottom: 2px solid var(--primary-color);
+
+      .attack {
+        padding: 10px 0;
+
+        &:nth-child(even) {
+          background-color: rgb(224, 239, 255);
+        }
+        .attack-effect {
+          font-style: italic;
+        }
+      }
+    }
+  }
 }
 
-.TCG-list a {
-  text-decoration: none;
-  color: var(--dark-grey);
+#addToCollections,
+#addToFavorites {
+  border-radius: 5px;
+  margin: 20px auto;
+
+  #collection-added {
+    color: green;
+    &.hide {
+      display: none;
+    }
+    &.card-list {
+      font-size: 1rem;
+    }
+  }
 }
+
+/* End of TCG Details design */
 
 @media screen and (min-width: 500px) {
   body {
@@ -710,6 +800,32 @@ button {
       }
     }
   }
+
+  .cards-detail-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2vw;
+
+    .general-info,
+    #other-info {
+      max-width: 300px;
+    }
+
+    .general-info .variants {
+      width: 100%;
+      border: 1px solid black;
+      padding: 10px 0;
+    }
+
+    #other-info section {
+      margin: 10px;
+      box-shadow: 1px 1px 10px var(--primary-color);
+    }
+  }
+}
+
+@media screen and (min-width: 950px) {
 }
 
 @media screen and (min-width: 950px) {
@@ -726,14 +842,18 @@ button {
     background-color: white;
 
     .navigation {
+      display: flex;
       flex-direction: row;
 
       .pages {
         align-content: center;
-      }
 
-      .user-favorites {
         li {
+          padding: 0;
+          align-self: center;
+        }
+
+        .user-favorites {
           margin-top: 0;
           margin-right: 10px;
           border-radius: 8px;

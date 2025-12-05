@@ -2,15 +2,15 @@ import {getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
 function cardTemplate(card) {
 
-  let favorite = ""
+  let collection = ""
 
   if (cardExist(card.id)) {
-    favorite = "♥"
+    collection = "💾"
   }
   
   return `
     <li class="pokemon-card">
-      <h3>${card.name}</h3><span class="added">${favorite}</span></h3>
+      <h3>${card.name} <span id="collection-added" class="card-list">${collection}</span></h3>
       <img src="${card.image}" alt="${card.name} TCGcard image">
       <a href="/tcg_pages/index.html?card=${card.id}">More Details</a>
     </li>

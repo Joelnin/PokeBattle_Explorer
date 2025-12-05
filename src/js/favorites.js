@@ -1,4 +1,8 @@
-import { capitalizeFirstLetter, getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import {
+  capitalizeFirstLetter,
+  getLocalStorage,
+  loadHeaderFooter,
+} from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -12,9 +16,9 @@ function cardTemplate(pokemon) {
         
       </div>
       <div class="card-side back ${pokemon.types[0]}">
-        <a href="/pokemon_pages/index.html?pokemon=${pokemon.id}"><img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} original art picture"></a>
+        <a class="favorite" href="/pokemon_pages/index.html?pokemon=${pokemon.id}"><img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} original art picture"></a>
         <div class="pokemon-stats-container">
-          <h2>Stats</h3>
+          <h2>Stats</h2>
         <div class="pokemon-stats">
         ${pokemon.stats
           .map(
