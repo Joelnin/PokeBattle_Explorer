@@ -1,64 +1,82 @@
-import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import {
+  capitalizeFirstLetter,
+  getLocalStorage,
+  loadHeaderFooter,
+} from "./utils.mjs";
 
 loadHeaderFooter();
 
-// KEY name for favorites in localStorage
-const FAVORITES_KEY = "so-favorites";
+function cardTemplate(pokemon) {
+  return `
+    <li class="pokemon-card ${pokemon.types[0]} go-round">
+      <div class="card-side front">
+        <img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} original art picture">
+        <h3>${capitalizeFirstLetter(pokemon.name)}</h3>
+<p><strong>Type: </strong>${capitalizeFirstLetter(pokemon.types[0])}</p>
+        
+      </div>
+      <div class="card-side back ${pokemon.types[0]}">
+        <a class="favorite" href="/pokemon_pages/index.html?pokemon=${pokemon.id}"><img src="${pokemon.image}" alt="${capitalizeFirstLetter(pokemon.name)} original art picture"></a>
+        <div class="pokemon-stats-container">
+          <h2>Stats</h2>
+        <div class="pokemon-stats">
+        ${pokemon.stats
+          .map(
+            (stat) => `
+        <p><strong>${capitalizeFirstLetter(stat.name.replace(/-/g, " "))}: </strong>${stat.value}</p>
+      `,
+          )
+          .join("")}
+        </div>
+        </div>
+        <button title="Remove from Favorites" class="remove-item" data-id="${pokemon.id}">🗑️</button>
+      </div>
+      
+    </li>
+  `;
+}
 
 function renderFavorites() {
-  const favorites = getLocalStorage(FAVORITES_KEY) || [];
+  const favorites = getLocalStorage("so-favorites");
   const favList = document.querySelector(".favorites-list");
-  const favFooter = document.querySelector(".favorites-footer");
+  const favInfo = document.querySelector(".favorites-info");
 
-  if (favorites.length === 0) {
-    favList.innerHTML = `<div class="divider"><h2>No Favorites Yet</h2></div>`;
-    favFooter.classList.add("hide");
+  if (favorites == 0 || !favorites) {
+    favList.innerHTML = `<div class="no-fave"><h2 >No Favorites Yet</h2>
+    <p>There are no Favorite Pokemon yet. Add some from <a href="/pokemon_listing/">here</a> by going to your favorite Pokemon and clicking "Favorite."</p>
+    <p><strong>Remember:</strong> These will be the ones available for battle.<br>But just the allowed types: Electric, Fire, Water, Grass, and Rock.</p></div>`;
+    favInfo.innerHTML = "";
     return;
   }
 
-  const htmlItems = favorites.map((item) => favoriteItemTemplate(item));
+  const htmlItems = favorites.map((item) => cardTemplate(item));
   favList.innerHTML = htmlItems.join("");
 
-  document.querySelectorAll(".remove-favorite").forEach((btn) => {
+  document.querySelectorAll(".remove-item").forEach((btn) => {
     btn.addEventListener("click", removeFavorite);
   });
 
-  favFooter.classList.remove("hide");
+  let total = favorites.length;
+
+  favInfo.innerHTML = `<h2>You Like ${total} Pokemon.</h2>
+  <p>These will be available for battle.<br>But just the allowed types: Electric, Fire, Water, Grass, and Rock.</p>
+  
+  `;
 }
 
-function favoriteItemTemplate(item) {
-  return `<li class="fav-card divider">
-    <a href="#" class="fav-card__image">
-      <img src="${item.Images.PrimaryLarge}" alt="${item.Name}" />
-    </a>
-    <a href="#">
-      <h2 class="card__name">${item.Name}</h2>
-    </a>
-    <p class="fav-card__color">${item.Colors?.[0]?.ColorName || ""}</p>
-    <p class="fav-card__price">$${item.FinalPrice}</p>
+function removeFavorite(pokemon) {
+  const pokemonToRemove = pokemon.target.dataset.id;
 
-    <button class="remove-favorite" data-id="${item.Id}">Remove</button>
-  </li>`;
-}
+  let favs = getLocalStorage("so-favorites") || [];
 
-export function addToFavorites(product) {
-  let favs = getLocalStorage(FAVORITES_KEY) || [];
+  let index = favs.findIndex((item) => item.id == pokemonToRemove);
 
-  const exists = favs.find((p) => p.Id === product.Id);
-  if (!exists) {
-    favs.push(product);
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
-  }
-}
+  favs.splice(index, 1);
 
-function removeFavorite(e) {
-  const id = e.target.dataset.id;
-  let favs = getLocalStorage(FAVORITES_KEY) || [];
+  // Save the favorites again.
+  localStorage.setItem("so-favorites", JSON.stringify(favs));
 
-  favs = favs.filter((item) => item.Id != id);
-
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
-
+  // Load everything again.
   renderFavorites();
 }
 

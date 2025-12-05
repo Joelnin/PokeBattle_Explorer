@@ -1,5 +1,3 @@
-<!-- <a href="/pokemon.html?pokemon=${pokemon.id}"> -->
-
 <!doctype html>
 
 <html lang="en">
@@ -8,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>PokeBattle Explore | Pokemon Details</title>
+    <title>PokeBattle Explorer | Pokemon Details</title>
 
     <link rel="stylesheet" href="../css/style.css" />
 
@@ -20,23 +18,65 @@
 
     <main class="divider">
       <section class="pokemon-detail-container">
-        <h2 class="pokemon__name"></h2>
+        <h1 class="pokemon-name">Pokemon</h1>
 
         <div class="pokemon-detail-wrapper">
           <div class="pokemon-detail-image">
-            <img id="pokemonImage" alt="pokemon" />
+            <img
+              id="pokemonImage"
+              alt="Original art image"
+              src="/images/basic/no-image-pokemon.png"
+            />
           </div>
 
           <div class="pokemon-detail-info">
-            <p class="pokemon__types"></p>
-            <p class="pokemon__abilities"></p>
-            <div class="pokemon__stats"></div>
+            <div>
+              <p>
+                <strong>Type(s): </strong>
+                <span class="pokemon-types">None</span>.
+              </p>
 
-            <button id="addToFavorites" class="favorite-btn">
-              Add to Favorites
-            </button>
+              <p>
+                <strong>Height: </strong>
+                <span class="pokemon-height">0</span> m
+              </p>
+
+              <p>
+                <strong>Weight: </strong>
+                <span class="pokemon-weight">0</span> kg
+              </p>
+
+              <p>
+                <strong>Abilities: </strong>
+                <span class="pokemon-abilities">None</span>.
+              </p>
+              <p>
+                <strong>Moves: </strong>
+                <span class="pokemon-moves">None</span>.
+              </p>
+            </div>
+
+            <div class="stats">
+              <h2>Stats</h2>
+              <div class="pokemon-stats">
+                <p><strong>Hp: </strong>00</p>
+
+                <p><strong>Attack: </strong>00</p>
+
+                <p><strong>Defense: </strong>00</p>
+
+                <p><strong>Special attack: </strong>00</p>
+
+                <p><strong>Special defense: </strong>00</p>
+
+                <p><strong>Speed: </strong>00</p>
+              </div>
+            </div>
           </div>
         </div>
+        <button id="addToFavorites" class="favorite-btn" data-id="none">
+          Favorites <span id="favorite-heart">♥</span>
+        </button>
       </section>
     </main>
 

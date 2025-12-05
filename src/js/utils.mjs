@@ -59,10 +59,23 @@ export async function loadHeaderFooter() {
   const headerElement = document.querySelector("#main-header");
   const footerElement = document.querySelector("#main-footer");
 
+  
+
   renderWithTemplate(headerTemplate, headerElement);
+  menu();
   renderWithTemplate(footerTemplate, footerElement);
 }
 
 export function capitalizeFirstLetter(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+function menu(){
+  const hamButton = document.querySelector('#menu');
+  const navigation = document.querySelector('.navigation');
+
+  hamButton.addEventListener('click', () => {
+	navigation.classList.toggle('open');
+	hamButton.classList.toggle('open');
+});
 }

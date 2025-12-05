@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PokeBattle Explorer | TCG Details</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="../js/tcg.js" type="module"></script>
+  </head>
+
+  <body>
+    <header id="main-header" class="divider"></header>
+
+    <main class="divider">
+      <h1 class="card-category">Pokemon</h1>
+      <section class="cards-detail-container">
+        <section class="general-info">
+          <h2 class="card-name">Alakazam</h2>
+          <img
+            id="card-image"
+            src="https://assets.tcgdex.net/en/lc/lc/1/low.webp"
+            alt="Alakazam TCG card image"
+          />
+          <p class="rarity" id="card-rarity">Rare</p>
+          <div class="variants">
+            <h3>Known Variants</h3>
+
+            <ul id="card-variants">
+              <li>Reverse</li>
+              <li>Holo</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Pokemon stats -->
+        <div id="other-info">
+          <section class="stats">
+            <h2>Stats</h2>
+            <ul>
+              <li><strong>HP: </strong><span id="card-hp">80</span></li>
+              <li>
+                <strong>Types: </strong><span id="card-types">Psychic</span>.
+              </li>
+              <li>
+                <strong>Weaknesses:</strong>
+                <span id="card-weaknesses">Psychic</span>.
+              </li>
+            </ul>
+          </section>
+
+          <p><strong>HP: </strong><span id="card-hp">80</span></p>
+          <p><strong>Types: </strong><span id="card-types">Psychic</span>.</p>
+          <p>
+          <strong>Weaknesses: </strong
+            ><span id="card-weaknesses">Psychic</span>.
+          </p>
+
+          <!-- Attacks -->
+          <section class="attacks">
+            <h2>Attacks</h2>
+            <div id="card-attacks">
+              <div class="attack">
+                <h3>Confuse Ray</h3>
+                <p class="attack-effect">
+                  Flip a coin. If heads, defender is now Confused.
+                </p>
+                <p>
+                  <strong>Cost:</strong> <span class="psychic">Psychic</span> x3
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <button id="addToCollections" class="collection-btn" data-id="lc-1">
+        Collection 💾<span id="collection-added" class="">✔</span>
+      </button>
+    </main>
+
+    <footer id="main-footer"></footer>
+  </body>
+</html>

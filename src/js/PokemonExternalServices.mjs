@@ -1,11 +1,21 @@
 const baseURL = import.meta.env.VITE_POKEMON_API_URL;
 
-export default class ExternalPokemonServices {
+async function convertToJson(res) {
+  const jsonResponse = await res.json();
 
-  async getPokemonList(limit = 500) {
-    const res = await fetch(`${baseURL}pokemon?limit=${limit}`);
+  if (res.ok) {
+    return jsonResponse
+  } else {
+    throw { name: "servicesError", message: jsonResponse };
+  }
+}
 
-    const data = await res.json();
+export default class PokemonExternalServices {
+
+  async getPokemonList(limit = 1200) {
+    const response = await fetch(`${baseURL}pokemon?limit=${limit}`);
+
+    const data = await convertToJson(response);
 
     const details = await Promise.all(
       data.results.map(async (p) => {
@@ -25,9 +35,10 @@ export default class ExternalPokemonServices {
 
   async findPokemonById(id) {
     const res = await fetch(`${baseURL}/pokemon/${id}`);
-    const data = await res.json();
 
-    return {
+    const data = await convertToJson(res);
+
+    const details = {
       id: data.id,
       name: data.name,
       image: data.sprites.other["official-artwork"].front_default,
@@ -37,8 +48,14 @@ export default class ExternalPokemonServices {
         name: s.stat.name,
         value: s.base_stat,
       })),
+      moves: data.moves.map((m) => m.move.name).slice(0, 5),
+      weight: (data.weight / 10).toFixed(1), // Convert to kg
+      height: (data.height / 10).toFixed(1), // Convert to m
     };
+
+    // console.log(details)
+
+    return details;
   }
 }
-
 

@@ -1,4 +1,5 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { capitalizeFirstLetter, getLocalStorage, setLocalStorage } from "./utils.mjs";
+
 
 export default class PokemonDetails {
   constructor(pokemonId, dataSource) {
@@ -11,56 +12,84 @@ export default class PokemonDetails {
     this.pokemon = await this.dataSource.findPokemonById(this.pokemonId);
     this.renderPokemonDetails();
 
-    document
-      .getElementById("addToFavorites")
-      .addEventListener("click", this.addToFavorites.bind(this));
+    document.getElementById("addToFavorites").addEventListener("click", this.addToFavorites.bind(this));
   }
 
   addToFavorites() {
-    const favorites = getLocalStorage("favorites") || [];
+    const favorites = getLocalStorage("so-favorites") || [];
+    // const exists = favorites.find((poke) => poke.id === this.pokemon.id);
 
-    const exists = favorites.find((p) => p.id === this.pokemon.id);
-
-    if (!exists) {
+    if (!pokemonExist(this.pokemon.id)) {
       favorites.push(this.pokemon);
     }
 
-    setLocalStorage("favorites", favorites);
+    setLocalStorage("so-favorites", favorites);
+    isFavorite(this.pokemon.id);
   }
 
   renderPokemonDetails() {
-    const p = this.pokemon;
+    const pokemon = this.pokemon
 
-    // Nombre
-    document.querySelector(".pokemon__name").textContent =
-      p.name.charAt(0).toUpperCase() + p.name.slice(1);
+    // Name of the pokemon
+    let pokemonName = document.querySelector(".pokemon-name");
+    pokemonName.textContent = capitalizeFirstLetter(pokemon.name);
 
-    // Imagen
-    const img = document.getElementById("pokemonImage");
-    img.src = p.image;
-    img.alt = p.name;
+    // Pokemon image
+    let pokemonImage = document.getElementById("pokemonImage");
+    pokemonImage.src = pokemon.image;
+    pokemonImage.alt = `${capitalizeFirstLetter(pokemon.name)} original art image`;
 
-    // Tipos
-    document.querySelector(".pokemon__types").textContent =
-      "Type(s): " + p.types.join(", ");
+    // Pokemon Type(s)
+    let types = document.querySelector(".pokemon-types");
+    types.textContent = capitalizeFirstLetter(pokemon.types.join(", "));
 
-    // Habilidades
-    document.querySelector(".pokemon__abilities").textContent =
-      "Abilities: " + p.abilities.join(", ");
+    // Weight of the pokemon
+    let pokemonWeight = document.querySelector(".pokemon-weight");
+    pokemonWeight.textContent = capitalizeFirstLetter(pokemon.weight);
 
-    // Stats
-    document.querySelector(".pokemon__stats").innerHTML =
-      `<h3>Stats:</h3>` +
-      p.stats
-        .map(
-          (s) => `
-        <p><strong>${s.name}:</strong> ${s.value}</p>
-      `
-        )
-        .join("");
+    // Height of the pokemon
+    let pokemonHeight = document.querySelector(".pokemon-height");
+    pokemonHeight.textContent = capitalizeFirstLetter(pokemon.height);
 
-    // ID en el botón
-    const favBtn = document.getElementById("addToFavorites");
-    favBtn.dataset.id = p.id;
+    // Pokemon abilities
+    let abilities = document.querySelector(".pokemon-abilities");
+    abilities.textContent = capitalizeFirstLetter(pokemon.abilities.join(", ").replace(/-/g, " "));
+
+    // Pokemon move(s)
+    let moves = document.querySelector(".pokemon-moves");
+    moves.textContent = capitalizeFirstLetter(pokemon.moves.join(", ").replace(/-/g, " "));
+
+    // Pokemon Stats
+    let stats = document.querySelector(".pokemon-stats");
+    stats.innerHTML = pokemon.stats
+      .map(
+        (stat) => `
+        <p><strong>${capitalizeFirstLetter(stat.name.replace(/-/g, " "))}: </strong>${stat.value}</p>
+      `)
+      .join("");
+    
+    //Add pokemon to favorites
+    let addToFavorites = document.getElementById("addToFavorites")
+    addToFavorites.dataset.id = pokemon.id;
+    isFavorite(this.pokemon.id);
+  }
+}
+
+function pokemonExist(pokemonId) {
+  const favorites = getLocalStorage("so-favorites") || [];
+  const exists = favorites.find((item) => item.id === pokemonId);
+
+  if (exists) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function isFavorite(pokemon) {
+  const heart = document.querySelector("#favorite-heart")
+  
+  if (pokemonExist(pokemon) && !heart.classList.contains("added")) {
+    heart.classList.add("added");
   }
 }

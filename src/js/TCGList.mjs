@@ -1,110 +1,165 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import {getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
 function cardTemplate(card) {
+
+  let collection = ""
+
+  if (cardExist(card.id)) {
+    collection = "💾"
+  }
+  
   return `
     <li class="pokemon-card">
-      <h3>${card.name}</h3>
-      <img src="${card.image}" alt="${card.name} card image">
+      <h3>${card.name} <span id="collection-added" class="card-list">${collection}</span></h3>
+      <img src="${card.image}" alt="${card.name} TCGcard image">
       <a href="/tcg_pages/index.html?card=${card.id}">More Details</a>
     </li>
   `;
 }
 
 export default class TCGList {
-  constructor(searchInput, dataSource, listElement, paginationElement) {
+  constructor(searchInput, dataSource, listElement) {
     this.searchInput = searchInput;
     this.dataSource = dataSource;
     this.listElement = listElement;
-    this.paginationElement = paginationElement;
 
     this.allResults = [];
-    this.pageSize = 10;
+    this.filteredResults = [];
     this.currentPage = 1;
+    this.pageSize = 15;
   }
 
-  init() {
-    this.startPage();
+  async init() {
 
-    document.getElementById("tcgSearchBtn")
-      .addEventListener("click", () => this.performSearch());
-    
-  }
+    this.allResults = await this.dataSource.getCardsList();
+    this.filteredResults = [...this.allResults];
 
-  async startPage() {
-    this.allResults = await this.dataSource.getStartData();
+    document.getElementById("searchBtn").addEventListener("click", () => {
+      this.performSearch();
+    });
+
     this.renderPage();
   }
 
   async performSearch() {
     const query = this.searchInput.value.trim().toLowerCase();
-    if (!query) return;
 
     this.currentPage = 1;
-    this.allResults = await this.dataSource.getData(query);
 
-    if (this.allResults.length === 0) {
+    const filteredBeforeSearch = this.filteredResults;
+
+    this.filteredResults = this.filteredResults.filter(card => card.name.includes(query));
+
+    if (this.filteredResults.length === 0) {
+      this.listElement.innerHTML = "<p>No matching card found.</p>";
+      return;
+    }
+    this.renderPage();
+    this.filteredResults = filteredBeforeSearch;
+  }
+
+    renderPage() {
+      const start = (this.currentPage - 1) * this.pageSize;
+      const end = start + this.pageSize;
+      const pageItems = this.filteredResults.slice(start, end);
+      // console.log(`Esta es la current antes de gettear ${this.currentPage}`)
+      document.getElementById("current-page").innerText = this.currentPage;
+      // console.log(`Esta es la current despues de gettear ${this.currentPage}`)
+  
+      renderListWithTemplate(
+        cardTemplate,
+        this.listElement,
+        pageItems,
+        "afterbegin",
+        true
+      );
+  
+      this.renderPagination()
+    
+  }
+
+  performSearch() {
+    const query = this.searchInput.value.trim().toLowerCase();
+
+    this.currentPage = 1;
+
+    const filteredBeforeSearch = this.filteredResults;
+
+    this.filteredResults = this.filteredResults.filter(card => card.name.toLowerCase().includes(query));
+
+    if (this.filteredResults.length === 0) {
       this.listElement.innerHTML = "<p>No matching cards found.</p>";
-      this.paginationElement.innerHTML = "";
       return;
     }
 
     this.renderPage();
-  }
 
-  // Just 10 for now
-  renderPage() {
-    const start = (this.currentPage - 1) * this.pageSize;
-    const end = start + this.pageSize;
-
-    const pageItems = this.allResults.slice(start, end);
-
-    renderListWithTemplate(
-      cardTemplate,
-      this.listElement,
-      pageItems,
-      "afterbegin",
-      true
-    );
-
-    this.renderPagination();
+    this.filteredResults = filteredBeforeSearch;
   }
 
   // Button for pagination
   renderPagination() {
-    const totalPages = Math.ceil(this.allResults.length / this.pageSize);
-    this.paginationElement.innerHTML = "";
 
-    if (totalPages <= 1) return;
+    const tPage = document.getElementById("total-pages");
+    // const cPage = document.getElementById("current-page");
+
+    const nextPagebtn = document.getElementById("next-page");
+    const backPagebtn = document.getElementById("back-page");
+
+    // Total pages
+    const totalPages = Math.ceil(this.filteredResults.length / this.pageSize);
+
+    tPage.innerText = totalPages;
+
+    if (totalPages <= 1) return; // Just a page doesn't need pagination
 
     // Prev button
     if (this.currentPage > 1) {
-      const prevBtn = this.createPageButton("Prev", this.currentPage - 1);
-      this.paginationElement.appendChild(prevBtn);
-    }
 
-    // Page numbers
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = this.createPageButton(i, i);
-      if (i === this.currentPage) btn.classList.add("active");
-      this.paginationElement.appendChild(btn);
+      if (!backPagebtn.classList.contains("active")) {
+        const bbtn = document.createElement("button");
+        bbtn.innerText = "◀"
+        backPagebtn.appendChild(bbtn);
+        bbtn.addEventListener("click", () => {
+          this.currentPage = this.currentPage - 1;
+          this.renderPage();
+
+        });
+      }
+      backPagebtn.setAttribute("class", "active")
+    } else {
+      backPagebtn.classList.remove("active");
+      backPagebtn.innerHTML = "";
     }
 
     // Next button
     if (this.currentPage < totalPages) {
-      const nextBtn = this.createPageButton("Next", this.currentPage + 1);
-      this.paginationElement.appendChild(nextBtn);
+      if (!nextPagebtn.classList.contains("active")) {
+        const nbtn = document.createElement("button");
+        nbtn.innerText = "▶"
+        nextPagebtn.appendChild(nbtn);
+        
+        nbtn.addEventListener("click", () => {
+          this.currentPage = this.currentPage + 1;
+          this.renderPage();
+
+        });
+      }
+      nextPagebtn.setAttribute("class", "active")
+    } else {
+      nextPagebtn.classList.remove("active")
+      nextPagebtn.innerHTML = "";
     }
   }
+}
 
-  createPageButton(label, page) {
-    const btn = document.createElement("button");
-    btn.textContent = label;
-    btn.classList.add("page-btn");
-    btn.addEventListener("click", () => {
-      this.currentPage = page;
-      this.renderPage();
-    });
+function cardExist(cardId) {
+  const collections = getLocalStorage("so-collection") || [];
+  const exists = collections.find((item) => item.id === cardId);
 
-    return btn;
+  if (exists) {
+    return true;
+  } else {
+    return false;
   }
 }
