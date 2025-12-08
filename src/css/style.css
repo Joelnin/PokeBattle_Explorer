@@ -125,6 +125,12 @@ button {
       text-align: center;
       color: var(--primary-color);
       background: var(--accent2-color);
+      li {
+        width: 100%;
+      a {
+        width: 100%;
+      }}
+      
     }
   }
 }
@@ -850,9 +856,6 @@ button {
 }
 
 @media screen and (min-width: 950px) {
-}
-
-@media screen and (min-width: 950px) {
   header {
     flex-direction: row;
     justify-content: space-between;
@@ -883,6 +886,10 @@ button {
           border-radius: 8px;
         }
       }
+            &.open ul {
+              display: flex;
+              flex-direction: row;
+            }
     }
 
     ul {

@@ -22,6 +22,15 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+// retrieve data from session storage
+export function getSessionStorage(key) {
+  return JSON.parse(sessionStorage.getItem(key));
+}
+
+// save data to session storage
+export function setSessionStorage(key, data) {
+  sessionStorage.setItem(key, JSON.stringify(data));
+}
 
 export function getParam(param) {
   const queryString = window.location.search;

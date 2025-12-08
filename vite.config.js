@@ -16,6 +16,8 @@ export default defineConfig({
         tcg_listing: resolve(__dirname, "src/tcg_listing/index.html"),
         tcg_pages: resolve(__dirname, "src/tcg_pages/index.html"),
         collections: resolve(__dirname, "src/collections/index.html"),
+
+        battle_lobby: resolve(__dirname, "src/battle_lobby/index.html"),
       },
     },
   },

@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "Aiko Fujimoto",
+    "country": "japan",
+    "image": "/images/basic/no-image-pokemon.webp",
+    "team": [
+      {
+        "trainer-id": 1,
+        "name": "pikachu",
+        "type": "electric",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+      },
+      {
+        "trainer-id": 2,
+        "name": "charizard",
+        "type": "fire",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+      },
+      {
+        "trainer-id": 3,
+        "name": "lapras",
+        "type": "water",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png"
+      },
+      {
+        "trainer-id": 4,
+        "name": "exeggcute",
+        "type": "grass",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/102.png"
+      },
+      {
+        "trainer-id": 5,
+        "name": "sudowoodo",
+        "type": "rock",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/185.png"
+      }
+    ]
+  }
+]

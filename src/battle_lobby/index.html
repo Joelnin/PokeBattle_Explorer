@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokeBattle Explorer | Home</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="../js/battle-lobby.js" type="module"></script>
+
+    <link rel="icon" href="/images/favicon-32x32.png" />
+  </head>
+
+  <body>
+    <header id="main-header" class="divider"></header>
+    <main class="divider">
+      <h1>Battle Lobby</h1>
+      <div class="hero">
+        <img
+          src="/images/banner_sm.jpg"
+          srcset="/images/banner_sm.jpg 500w, /images/banner.jpg 1000w"
+          alt="image of a high mountain lake"
+          sizes="100vw"
+        />
+
+        <div class="hero-description">
+          <p>BATTLE USING YOUR FAVORITE POKEMON TYPE!</p>
+        </div>
+      </div>
+
+      <section id="pokemon-available">
+        <div class="type-filter">
+          <a class="filter-btn active" data-type="all">All</a>
+          <a class="filter-btn" data-type="grass">Grass</a>
+          <a class="filter-btn" data-type="fire">Fire</a>
+          <a class="filter-btn" data-type="water">Water</a>
+          <a class="filter-btn" data-type="electric">Electric</a>
+          <a class="filter-btn" data-type="rock">Rock</a>
+        </div>
+
+        <div>
+          <ul class="pokemon-list">
+            <li class="pokemon-card">
+              <h3>Bulbasaur</h3>
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+                alt="bulbasaur imahe"
+              />
+              <p>Type: Grass</p>
+            </li>
+
+            <li class="pokemon-card">
+              <h3>Ivysaur</h3>
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+                alt="ivysaur imahe"
+              />
+              <p>Type: Grass</p>
+            </li>
+
+            <li class="pokemon-card">
+              <h3>Venusaur</h3>
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+                alt="venusaur imahe"
+              />
+              <p>Type: Grass</p>
+            </li>
+          </ul>
+
+          <div class="pagination">
+            <a href="#top-list" id="back-page"><!-- <button>◀</button> --></a>
+            <p>
+              Page <span id="current-page">1</span> of
+              <span id="total-pages">1</span>
+            </p>
+            <a href="#top-list" id="next-page"><!-- <button>▶</button> --></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="chosen-container">
+        <div id="chosen-pokemon"></div>
+        <button id="battle-btn">Go to Fight!</button>
+        <div id="chosen-trainer"></div>
+      </section>
+      <section id="gymnasium">
+        <ul class="trainer-list">
+          <li class="trainer">
+            <img
+              src="/images/basic/no-image-pokemon.png"
+              alt="Chinese Trainer"
+            />
+          </li>
+          <li class="trainer">
+            <img
+              src="/images/basic/no-image-pokemon.png"
+              alt="Chinese Trainer"
+            />
+          </li>
+          <li class="trainer">
+            <img
+              src="/images/basic/no-image-pokemon.png"
+              alt="Chinese Trainer"
+            />
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer id="main-footer"></footer>
+  </body>
+</html>
