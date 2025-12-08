@@ -11,7 +11,7 @@ function lobbyCardTemplate(pokemon) {
 }
 
 
-export default class PokemonLobbyLists {
+export default class BattleLobbyLists {
   constructor(dataSource, listElement, filterElement, chosenContainer) {
     this.dataSource = dataSource;
     this.listElement = listElement;
@@ -27,7 +27,7 @@ export default class PokemonLobbyLists {
 
   async init() {
       
-    const allowedTypes = ["water", "grass", "fire", "electric", "rock"];
+    const allowedTypes = ["water", "fire", "rock"];
 
     this.allPokemon = this.dataSource.filter(pokemon =>
       allowedTypes.includes(pokemon.types[0]));
@@ -140,7 +140,7 @@ export default class PokemonLobbyLists {
         p => `
         <div class="chosen-card">
           <button class="remove-btn" data-id="${p.id}">✖</button>
-          <img src="${p.image}">
+          <img src="${p.image}" alt="${p.name} imagen">
           <h4>${capitalizeFirstLetter(p.name)}</h4>
         </div>
       `

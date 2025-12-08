@@ -18,6 +18,7 @@ export default defineConfig({
         collections: resolve(__dirname, "src/collections/index.html"),
 
         battle_lobby: resolve(__dirname, "src/battle_lobby/index.html"),
+        battle_pages: resolve(__dirname, "src/battle_pages/index.html"),
       },
     },
   },

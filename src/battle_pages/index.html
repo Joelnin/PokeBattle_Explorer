@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PokeBattle Explorer | Home</title>
@@ -9,19 +8,33 @@
     <script src="../js/battle.js" type="module"></script>
 
     <link rel="icon" href="/images/favicon-32x32.png" />
-</head>
+  </head>
 
-<body>
+  <body>
     <header id="main-header" class="divider"></header>
     <main class="divider">
-        <h1>Battle</h1>
+      <h1>Battle</h1>
 
-        <div>
+      <div class="team-container user-team">
+        <h2>Your Team</h2>
+        <div class="pokemon-list"></div>
+      </div>
 
+      <div class="fight-arena">
+        <h2>INICIA ARENA</h2>
+        <div class="pokemon-user"></div>
+        <div class="battle-result">
+          <button id="fightBtn">Fight!</button>
         </div>
-        
+        <div class="pokemon-comp"></div>
+        <h2>Finaliza</h2>
+      </div>
+
+      <div class="team-container opponent">
+        <h2 id="trainerName"></h2>
+        <div class="opponent-list"></div>
+      </div>
     </main>
     <footer id="main-footer"></footer>
-</body>
-
+  </body>
 </html>

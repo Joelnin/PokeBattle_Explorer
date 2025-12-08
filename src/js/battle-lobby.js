@@ -1,4 +1,4 @@
-import PokemonLobbyLists from "./PokemonLobbyLists.mjs";
+import BattleLobbyLists from "./BattleLobbyLists.mjs";
 import TrainerData from "./TrainerData";
 import TrainerLobbyList from "./TrainerLobbyList.mjs";
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
@@ -16,7 +16,7 @@ const dataSourceTrainer = new TrainerData();
 
 const filterElement = document.querySelector(".type-filter");
 
-const pokemonLists = new PokemonLobbyLists(
+const pokemonLists = new BattleLobbyLists(
   dataSourcePoke,
   listElementPoke,
   filterElement,
