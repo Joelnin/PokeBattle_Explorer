@@ -816,6 +816,9 @@ button {
 /* End of TCG Details design */
 
 /* Battle */
+.battle-lobby section li {
+cursor: pointer;
+}
 .chosen-container {
   text-align: center;
   margin: 30px 20px;
@@ -859,8 +862,8 @@ button {
   }
 }
 
-.selected {
-  border-color: var(--secondary-color);
+li.pokemon-card.selected {
+  border: 2px solid var(--secondary-color);
 }
 
 /* End of Battle Lobby */

@@ -12,8 +12,6 @@ function cardTemplate(pokemon) {
 
 function getBattleResult(userType, opponentType) {
 
-  console.log(`Este es el tipo del user "${userType}" y este es el del oponente "${opponentType}"`);
-
   if (userType == "water") {
     if (opponentType == "fire") {
       return "win";
