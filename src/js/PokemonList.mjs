@@ -76,7 +76,6 @@ export default class PokemonList {
       return;
     }
     this.renderPage();
-    this.filteredPokemon = filteredBeforeSearch;
   }
 
   renderFilters() {
