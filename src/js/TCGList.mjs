@@ -12,7 +12,7 @@ function cardTemplate(card) {
     <li class="pokemon-card">
       <h3>${card.name} <span id="collection-added" class="card-list">${collection}</span></h3>
       <img src="${card.image}" alt="${card.name} TCGcard image">
-      <a href="/tcg_pages/index.html?card=${card.id}">More Details</a>
+      <a href="/tcg_pages/index.html?card=${card.id}">Details</a>
     </li>
   `;
 }
