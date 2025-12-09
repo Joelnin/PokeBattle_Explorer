@@ -13,11 +13,11 @@ async function convertToJson(res) {
 function processData(data) {
   const processed = data
     .filter(card => card.name !== "Unown") // Skip those with Unown as the name
-    // .filter(card => card.image && card.image !== "") // Also skip those with no image (for later).
+    .filter(card => card.image && card.image !== "") // Also skip those with no image.
     .map(card => ({
       id: card.id,
       name: card.name,
-      image: card.image ? `${card.image}/low.webp` : "/images/basic/no-image.png", // If they don't have an image, get the image from the basic images
+      // image: card.image ? `${card.image}/low.webp` : "/images/basic/no-image.png", // If they don't have an image, get the image from the basic images
     }));
 
   return processed;
