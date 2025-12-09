@@ -67,9 +67,9 @@ export default class PokemonList {
 
     this.currentPage = 1;
 
-    const filteredBeforeSearch = this.filteredPokemon;
 
-    this.filteredPokemon = this.filteredPokemon.filter(pokemon => pokemon.name.includes(query));
+
+    this.filteredPokemon = this.allPokemon.filter(pokemon => pokemon.name.includes(query));
 
     if (this.filteredPokemon.length === 0) {
       this.listElement.innerHTML = "<p>No matching pokemon found.</p>";
