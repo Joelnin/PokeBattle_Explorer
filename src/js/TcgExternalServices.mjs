@@ -17,6 +17,7 @@ function processData(data) {
     .map(card => ({
       id: card.id,
       name: card.name,
+      image: `${card.image}/low.webp`,
       // image: card.image ? `${card.image}/low.webp` : "/images/basic/no-image.png", // If they don't have an image, get the image from the basic images
     }));
 
