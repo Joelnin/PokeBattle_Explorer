@@ -8,7 +8,7 @@ import {
 function lobbyCardTemplate(trainer) {
   return `
     <li class="trainer-card" data-id="${trainer.id}">
-      <h3>${trainer.name}</h3>
+      <h3>${trainer.name} ${trainer.lastName}</h3>
       <img src="${trainer.image}" alt="${trainer.name} profile picture">
       <p>Location: ${capitalizeFirstLetter(trainer.country)}</p>
     </li>
@@ -109,10 +109,10 @@ export default class TrainerLobbyList {
 
     this.chosenContainer.innerHTML = `
       <div class="chosen-card">
-        <img src="${t.image}" alt="${t.name}">
-        <h4>${t.name}</h4>
-        <p>${capitalizeFirstLetter(t.country)}</p>
-        <button class="remove-btn" data-id="${t.id}">Remove</button>
+      <button class="remove-btn" data-id="${t.id}">✖</button>
+        <img src="${t.image}" alt="${t.lastName} profile">
+        <h4>${t.lastName}</h4>
+        
       </div>
     `;
   } // See if the name looks good after CSS

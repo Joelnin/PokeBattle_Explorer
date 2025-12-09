@@ -44,7 +44,7 @@ function renderFavorites() {
   if (favorites == 0 || !favorites) {
     favList.innerHTML = `<div class="no-fave"><h2 >No Favorites Yet</h2>
     <p>There are no Favorite Pokemon yet. Add some from <a href="/pokemon_listing/">here</a> by going to your favorite Pokemon and clicking "Favorite."</p>
-    <p><strong>Remember:</strong> These will be the ones available for battle.<br>But just the allowed types: Electric, Fire, Water, Grass, and Rock.</p></div>`;
+    <p><strong>Remember:</strong> These will be the ones available for battle.<br>But just the allowed types: Fire, Water, and Rock. Coming soon: Electric and Grass.</p></div>`;
     favInfo.innerHTML = "";
     return;
   }
@@ -59,7 +59,7 @@ function renderFavorites() {
   let total = favorites.length;
 
   favInfo.innerHTML = `<h2>You Like ${total} Pokemon.</h2>
-  <p>These will be available for battle.<br>But just the allowed types: Electric, Fire, Water, Grass, and Rock.</p>
+  <p>These will be the ones available for battle.<br>But just the allowed types: Fire, Water, and Rock. Coming soon: Electric and Grass.</p>
   
   `;
 }

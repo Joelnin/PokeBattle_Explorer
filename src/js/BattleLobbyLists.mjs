@@ -141,7 +141,6 @@ export default class BattleLobbyLists {
         <div class="chosen-card">
           <button class="remove-btn" data-id="${p.id}">✖</button>
           <img src="${p.image}" alt="${p.name} imagen">
-          <h4>${capitalizeFirstLetter(p.name)}</h4>
         </div>
       `
       )

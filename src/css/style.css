@@ -30,6 +30,10 @@ img {
   max-width: 100%;
 }
 
+main {
+  padding-bottom: 15px;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -103,15 +107,18 @@ button {
 
       .user-favorites {
         background-color: var(--secondary-color);
-        padding: 10px;
         margin-top: 10px;
-        border-radius: 8px;
+        border-radius: 15px;
+        &:hover {
+          background-color: var(--light-grey);
+        }
       }
     }
 
     a {
       text-decoration: none;
       padding: 1rem;
+      padding: 15px;
     }
 
     &.open {
@@ -168,8 +175,10 @@ button {
     border-radius: 60px;
     margin-right: 5px;
   }
-  a {
-    color: black;
+  a img {
+    width: 100%;
+    border-radius: 0;
+    height: 35px;
   }
 }
 
@@ -396,13 +405,15 @@ button {
 }
 
 .pokemon-list,
-.TCG-list {
+.TCG-list,
+.trainer-list {
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
   justify-content: center;
 
-  .pokemon-card {
+  .pokemon-card,
+  .trainer-card {
     flex: 1 1 45%;
     margin: 0.25em;
     padding: 1rem;
@@ -804,6 +815,168 @@ button {
 
 /* End of TCG Details design */
 
+/* Battle */
+.chosen-container {
+  text-align: center;
+  margin: 30px 20px;
+  > div > div {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(57, 167, 195, 0.5);
+    margin: 10px;
+    border-radius: 10px;
+
+    border-top: 1px solid var(--primary-color);
+    .chosen-card {
+      position: relative;
+      width: 100px;
+      border: 5px solid var(--light-grey);
+      border-radius: 25px;
+      margin: 10px;
+      background-color: white;
+      text-align: center;
+
+      img {
+        border-radius: 15px;
+      }
+      .remove-btn {
+        position: absolute;
+        padding: 0 5px;
+        border-radius: 20px;
+        right: 0;
+        background-color: var(--dark-grey);
+      }
+    }
+  }
+
+  button {
+    border-radius: 15px;
+    &:hover {
+      background-color: var(--tertiary-color);
+      border-color: var(--dark-grey);
+    }
+  }
+}
+
+.selected {
+  border-color: var(--secondary-color);
+}
+
+/* End of Battle Lobby */
+/* Battle page */
+.battle-arena {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  .rules {
+    border: 2px solid var(--dark-grey);
+    max-width: 250px;
+    align-self: center;
+    list-style: none;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  img {
+    width: 100px;
+  }
+  .team-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    * {
+      list-style: none;
+      justify-content: center;
+    }
+
+    &.user-team {
+      box-shadow: 1px 1px 10px var(--primary-color);
+      text-decoration: underline var(--primary-color);
+    }
+
+    &.opponent {
+      box-shadow: 1px 1px 10px var(--tertiary-color);
+      text-decoration: underline var(--tertiary-color);
+    }
+
+    .pokemon-list,
+    .opponent-list {
+      display: flex;
+      flex-direction: row;
+      padding: 20px;
+    }
+  }
+  .fight-arena {
+    display: flex;
+    flex-direction: row;
+    padding: 30px 10px;
+    border: 5px solid var(--light-grey);
+    margin: 10px 0;
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+      background-color: var(--secondary-color);
+      padding: 5px 10px;
+      border-radius: 15px;
+      color: #12229b;
+      &:hover {
+        background-color: var(--light-grey);
+        border: 2px solid black;
+        color: black;
+      }
+    }
+
+    button {
+      border-radius: 15px;
+    }
+  }
+}
+
+.battle-lobby {
+  text-align: center;
+}
+
+@media screen and (max-width: 780px) {
+  #pokemon-available,
+  #gymnasium {
+    text-align: center;
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    padding: 10px;
+
+    .pokemon-list,
+    .trainer-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .pokemon-card,
+      .trainer-card {
+        display: grid;
+        padding: 0;
+        grid-template-columns: 100px 1fr;
+        grid-template-rows: 1fr 1fr;
+        border: 5px solid var(--light-grey);
+        margin: 2px 0;
+        max-width: 100%;
+        place-items: center;
+
+        h3 {
+          grid-column: 2/3;
+        }
+
+        img {
+          grid-column: 1/2;
+          grid-row: 1/3;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -852,6 +1025,25 @@ button {
       margin: 10px;
       box-shadow: 1px 1px 10px var(--primary-color);
     }
+  }
+
+  .chosen-container {
+    /* display: ; */
+    flex-direction: row;
+    max-width: 100%;
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .team-container,
+  .fight-arena {
+    width: 600px;
+    align-self: center;
   }
 }
 

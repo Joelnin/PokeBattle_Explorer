@@ -74,6 +74,8 @@ export default class BattleDetails {
 
   init() {
     document.getElementById("trainerName").innerText = `${this.dataSourceTrainer[0].name}'s Team`;
+    document.getElementById("trainerPicture").innerHTML = `<img src="${this.dataSourceTrainer[0].image}" alt="${this.dataSourceTrainer[0].name} profile image">`;
+
 
     this.userTeam = this.dataSourcePokemon || [];
 

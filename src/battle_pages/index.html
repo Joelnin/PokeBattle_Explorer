@@ -11,26 +11,30 @@
   </head>
 
   <body>
-    <header id="main-header" class="divider"></header>
-    <main class="divider">
+    <header id="main-header" class="divider battle"></header>
+    <main class="divider battle-arena">
       <h1>Battle</h1>
-
+      <ul class="rules">
+        Rules
+        <li><strong>Rock</strong> wins over <strong>Water</strong></li>
+        <li><strong>Water</strong> wins over <strong>Fire</strong></li>
+        <li><strong>Fire</strong> wins over <strong>Rock</strong></li>
+      </ul>
       <div class="team-container user-team">
         <h2>Your Team</h2>
         <div class="pokemon-list"></div>
       </div>
 
       <div class="fight-arena">
-        <h2>INICIA ARENA</h2>
         <div class="pokemon-user"></div>
         <div class="battle-result">
           <button id="fightBtn">Fight!</button>
         </div>
         <div class="pokemon-comp"></div>
-        <h2>Finaliza</h2>
       </div>
 
       <div class="team-container opponent">
+        <div id="trainerPicture"></div>
         <h2 id="trainerName"></h2>
         <div class="opponent-list"></div>
       </div>
