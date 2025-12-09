@@ -90,7 +90,7 @@ export default class BattleDetails {
       this.chooseOpponentPokemon(this.trainerTeam);
       setTimeout(() => {
         this.startGame(this.userPokemon, this.opponentPokemon);
-      }, 1000);
+      }, 1500);
     });
 
     this.listElementPokemon.addEventListener("click", (e) => {
