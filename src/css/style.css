@@ -923,7 +923,6 @@ li.pokemon-card.selected {
     border: 5px solid var(--light-grey);
     margin: 10px 0;
     justify-content: center;
-    background-color: white;
 
     a {
       text-decoration: none;
