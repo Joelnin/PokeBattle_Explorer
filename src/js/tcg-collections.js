@@ -10,15 +10,15 @@ function cardTemplate(card) {
   return `
     <li class="pokemon-card go-round">
       <div class="card-side front">
-        <h3>${card.name}</h3>
         <img src="${card.image}" alt="${card.name} card picture">
-<p><strong>Rarity: </strong>${capitalizeFirstLetter(card.rarity)}</p>
         
       </div>
       <div class="card-side back">
-        <a class="collection"  href="/pokemon_pages/index.html?pokemon=${card.id}"><imgsrc="${card.image}" alt="${card.name} card picture"></a>
+        <a class="collection"  href="/tcg_pages/index.html?card=${card.id}"><img src="${card.image}" alt="${card.name} card picture"></a>
         <div class="pokemon-stats-container">
         <h2>${card.name}</h2>
+<p><i>${capitalizeFirstLetter(card.rarity)}</i></p>
+
           <h3>Stats</h3>
         <div class="pokemon-stats">
         <p><strong>HP: </strong><span id="card-hp">${card.hp}</span></p>

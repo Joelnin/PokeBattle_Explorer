@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Aiko",
+    "lastName": "Fujimoto",
+    "country": "Japan",
+    "image": "/images/aiko-fujimoto-profile.jpg",
+    "team": [
+      {
+        "local-id": 1,
+        "name": "charizard",
+        "types": ["fire"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+      },
+      {
+        "local-id": 2,
+        "name": "lapras",
+        "types": ["water"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/131.png"
+      },
+      {
+        "local-id": 3,
+        "name": "sudowoodo",
+        "types": ["rock"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/185.png"
+      },
+      {
+        "local-id": 4,
+        "name": "sudowoodo",
+        "types": ["rock"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/185.png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Henry",
+    "lastName": "Calvin",
+    "country": "Norway",
+    "image": "/images/henry-calvin-profile.jpg",
+    "team": [
+      {
+        "local-id": 1,
+        "name": "tyranitar",
+        "types": ["rock", "dark"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png"
+      },
+      {
+        "local-id": 2,
+        "name": "greninja",
+        "types": ["water", "dark"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/658.png"
+      },
+      {
+        "local-id": 3,
+        "name": "incineroar",
+        "types": ["fire", "dark"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/727.png"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Jennifer",
+    "lastName": "Lorans",
+    "country": "India",
+    "image": "/images/jennifer-lorans-profile.jpg",
+    "team": [
+      {
+        "local-id": 1,
+        "name": "quagsire",
+        "types": ["water", "ground"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/195.png"
+      },
+      {
+        "local-id": 2,
+        "name": "rhydon",
+        "types": ["rock", "ground"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/112.png"
+      },
+      {
+        "local-id": 3,
+        "name": "camerupt",
+        "types": ["fire", "ground"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/323.png"
+      },
+      {
+        "local-id": 4,
+        "name": "toedscruel",
+        "types": ["rock", "dark"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/949.png"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Pedro",
+    "lastName": "Pascal",
+    "country": "Mexico",
+    "image": "/images/pedro-pascal-profile.jpg",
+    "team": [
+      {
+        "local-id": 1,
+        "name": "poliwrath",
+        "types": ["water", "fighting"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/62.png"
+      },
+      {
+        "local-id": 2,
+        "name": "blaziken",
+        "types": ["fire", "fighting"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/257.png"
+      },
+      {
+        "local-id": 4,
+        "name": "camerupt",
+        "types": ["fire", "ground"],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/323.png"
+      }
+    ]
+  }
+]

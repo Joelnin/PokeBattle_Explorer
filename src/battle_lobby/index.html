@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokeBattle Explorer | Home</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="../js/battle-lobby.js" type="module"></script>
+
+    <link rel="icon" href="/images/favicon-32x32.png" />
+  </head>
+
+  <body>
+    <header id="main-header" class="divider"></header>
+    <main class="divider battle-lobby">
+      <h1>Battle Lobby</h1>
+      <div class="hero">
+        <img
+          src="/images/banner_sm.jpg"
+          srcset="/images/banner_sm.jpg 500w, /images/banner.jpg 1000w"
+          alt="image of a high mountain lake"
+          sizes="100vw"
+        />
+
+        <div class="hero-description">
+          <p>BATTLE USING YOUR FAVORITE POKEMON TYPE!</p>
+        </div>
+      </div>
+
+      <section id="pokemon-available">
+        <h2>
+          Choose your Pokemon team from your favorite Pokemon for this battle
+        </h2>
+        <div class="type-filter">
+          <a class="filter-btn active" data-type="all">All</a>
+          <a class="filter-btn" data-type="fire">Fire</a>
+          <a class="filter-btn" data-type="water">Water</a>
+          <a class="filter-btn" data-type="rock">Rock</a>
+        </div>
+
+        <div>
+          <ul class="pokemon-list">
+            <li class="pokemon-card">
+              <h3>Bulbasaur</h3>
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+                alt="bulbasaur imahe"
+              />
+              <p>Type: Grass</p>
+            </li>
+          </ul>
+
+          <div class="pagination">
+            <div id="back-page">.</div>
+            <p>
+              <span id="current-page">1</span> of
+              <span id="total-pages">1</span>
+            </p>
+            <div id="next-page">.</div>
+          </div>
+        </div>
+      </section>
+      <section id="gymnasium">
+        <h2>Now, choose your opponent</h2>
+        <ul class="trainer-list">
+          <li class="trainer"></li>
+        </ul>
+      </section>
+      <section class="chosen-container">
+        <h2>Ready for the battle?</h2>
+        <div>
+          <div id="chosen-pokemon"></div>
+          <h3>VS</h3>
+          <div id="chosen-trainer"></div>
+        </div>
+
+        <button id="battle-btn">Go to Fight!</button>
+      </section>
+    </main>
+    <footer id="main-footer"></footer>
+  </body>
+</html>
