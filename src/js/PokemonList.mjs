@@ -115,7 +115,6 @@ export default class PokemonList {
 
     tPage.innerText = totalPages;
 
-    if (totalPages <= 1) return; // Just a page doesn't need pagination
 
     // Prev button
     if (this.currentPage > 1) {
