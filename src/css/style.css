@@ -899,6 +899,9 @@ li.pokemon-card.selected {
     &.user-team {
       box-shadow: 1px 1px 10px var(--primary-color);
       text-decoration: underline var(--primary-color);
+      li {
+        cursor: pointer;
+      }
     }
 
     &.opponent {
