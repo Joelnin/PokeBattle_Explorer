@@ -67,16 +67,15 @@ export default class PokemonList {
 
     this.currentPage = 1;
 
-    const filteredBeforeSearch = this.filteredPokemon;
 
-    this.filteredPokemon = this.filteredPokemon.filter(pokemon => pokemon.name.includes(query));
+
+    this.filteredPokemon = this.allPokemon.filter(pokemon => pokemon.name.includes(query));
 
     if (this.filteredPokemon.length === 0) {
       this.listElement.innerHTML = "<p>No matching pokemon found.</p>";
       return;
     }
     this.renderPage();
-    this.filteredPokemon = filteredBeforeSearch;
   }
 
   renderFilters() {
@@ -116,7 +115,6 @@ export default class PokemonList {
 
     tPage.innerText = totalPages;
 
-    if (totalPages <= 1) return; // Just a page doesn't need pagination
 
     // Prev button
     if (this.currentPage > 1) {

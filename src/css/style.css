@@ -816,6 +816,9 @@ button {
 /* End of TCG Details design */
 
 /* Battle */
+.battle-lobby section li {
+  cursor: pointer;
+}
 .chosen-container {
   text-align: center;
   margin: 30px 20px;
@@ -859,8 +862,8 @@ button {
   }
 }
 
-.selected {
-  border-color: var(--secondary-color);
+li.pokemon-card.selected {
+  border: 2px solid var(--secondary-color);
 }
 
 /* End of Battle Lobby */
@@ -896,6 +899,9 @@ button {
     &.user-team {
       box-shadow: 1px 1px 10px var(--primary-color);
       text-decoration: underline var(--primary-color);
+      li {
+        cursor: pointer;
+      }
     }
 
     &.opponent {
@@ -923,11 +929,10 @@ button {
       background-color: var(--secondary-color);
       padding: 5px 10px;
       border-radius: 15px;
-      color: #12229b;
+      color: black;
       &:hover {
         background-color: var(--light-grey);
         border: 2px solid black;
-        color: black;
       }
     }
 

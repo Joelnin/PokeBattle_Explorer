@@ -26,32 +26,20 @@ export default class TrainerLobbyList {
   async init() {
     this.trainers = await this.dataSource.getData();
 
-    console.log(this.trainers)
-
-    this.renderList();
-    this.addListEvents();
-    this.renderChosenList();
-  }
-
-  addListEvents() {
     this.listElement.addEventListener("click", (e) => {
       const card = e.target.closest(".trainer-card");
       if (!card) return;
 
       const id = parseInt(card.dataset.id);
-      this.toggleSelection(id);
+      this.chooseTrainer(id);
     });
 
-    // remove from list (TODO: see if it's necessary the button. If it's not, fdelete this secton of code)
-    this.chosenContainer.addEventListener("click", (e) => {
-      if (!e.target.matches(".remove-btn")) return;
 
-      const id = parseInt(e.target.dataset.id);
-      this.removeTrainer(id);
-    });
+    this.renderList();
+    this.renderChosenList();
   }
 
-  toggleSelection(id) {
+  chooseTrainer(id) {
     let chosen = getSessionStorage("so-trainer") || [];
 
     const already = chosen.find(t => t.id === id);
@@ -59,16 +47,11 @@ export default class TrainerLobbyList {
     if (already) {
       // Delete
       chosen = [];
-    } else {
-      // Just one
-      if (chosen.length >= 1) {
-        alert("You can only choose 1 Trainer to fight with!");
-        return;
-      }
+    } 
 
       const trainer = this.trainers.find(t => t.id === id);
       chosen = [trainer];
-    }
+    
 
     setSessionStorage("so-trainer", chosen);
     this.renderChosenList();

@@ -12,8 +12,6 @@ function cardTemplate(pokemon) {
 
 function getBattleResult(userType, opponentType) {
 
-  console.log(`Este es el tipo del user "${userType}" y este es el del oponente "${opponentType}"`);
-
   if (userType == "water") {
     if (opponentType == "fire") {
       return "win";
@@ -90,7 +88,9 @@ export default class BattleDetails {
         return;
       }
       this.chooseOpponentPokemon(this.trainerTeam);
-      this.startGame(this.userPokemon, this.opponentPokemon);
+      setTimeout(() => {
+        this.startGame(this.userPokemon, this.opponentPokemon);
+      }, 1500);
     });
 
     this.listElementPokemon.addEventListener("click", (e) => {
@@ -131,6 +131,7 @@ export default class BattleDetails {
     document.querySelector(".pokemon-user").innerHTML = `
         <img data-type=${pokemon.types[0]} src="${pokemon.image}" alt="${pokemon.name} image">
       `;
+    document
   }
 
   chooseOpponentPokemon(team) {
@@ -140,6 +141,8 @@ export default class BattleDetails {
         document.querySelector(".pokemon-comp").innerHTML = `
         <img data-type=${this.opponentPokemon.types[0]} src="${this.opponentPokemon.image}" alt="${this.opponentPokemon.name} image">
       `;
+    
+    document.querySelector(".battle-result").innerHTML = `<p><strong>VS</strong></p>`
   }
 
   startGame(user, opponent) {

@@ -12,7 +12,7 @@ function cardTemplate(card) {
     <li class="pokemon-card">
       <h3>${card.name} <span id="collection-added" class="card-list">${collection}</span></h3>
       <img src="${card.image}" alt="${card.name} TCGcard image">
-      <a href="/tcg_pages/index.html?card=${card.id}">More Details</a>
+      <a href="/tcg_pages/index.html?card=${card.id}">Details</a>
     </li>
   `;
 }
@@ -83,9 +83,8 @@ export default class TCGList {
 
     this.currentPage = 1;
 
-    const filteredBeforeSearch = this.filteredResults;
 
-    this.filteredResults = this.filteredResults.filter(card => card.name.toLowerCase().includes(query));
+    this.filteredResults = this.allResults.filter(card => card.name.toLowerCase().includes(query));
 
     if (this.filteredResults.length === 0) {
       this.listElement.innerHTML = "<p>No matching cards found.</p>";
@@ -93,8 +92,6 @@ export default class TCGList {
     }
 
     this.renderPage();
-
-    this.filteredResults = filteredBeforeSearch;
   }
 
   // Button for pagination
@@ -110,8 +107,6 @@ export default class TCGList {
     const totalPages = Math.ceil(this.filteredResults.length / this.pageSize);
 
     tPage.innerText = totalPages;
-
-    if (totalPages <= 1) return; // Just a page doesn't need pagination
 
     // Prev button
     if (this.currentPage > 1) {
